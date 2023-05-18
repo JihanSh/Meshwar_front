@@ -1,0 +1,147 @@
+.about-wrap {
+  margin-top: 10vh;
+  height: 60vh;
+  display: flex;
+  /* background-color: rgba(228, 228, 228, 0.736); */
+  width: 90%;
+}
+.about-wrap-text h1 {
+  position: relative;
+  display: flex;
+  line-height: 60px;
+  color: #0d3762;
+  justify-content: start;
+  margin-top:20%;
+  font-size: 60px;
+}
+.about-wrap-text p {
+  text-align: start;
+  color: #0d3762;
+    font-size: 30px;
+}
+.about-wrap-text {
+  margin-left: 20%;
+}
+.about-wrap-image {
+  width: 400px;
+  height: 400px;
+  position: relative;
+  display: flex;
+  margin-left: 20%;
+  justify-content: center;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+.about-wrap-image img {
+  position: absolute;
+}
+.about-wrap-image img:first-of-type {
+  z-index: 0;
+  width: 250px;
+  height: 350px;
+  border-radius: 200px 200px 0 0;
+  border: 1px solid white;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+}
+
+.about-wrap-image img:last-of-type {
+  z-index: 1;
+  border-radius: 100px 100px 0 0;
+  border: 1px solid white;
+  width: 150px;
+  height: 200px;
+  bottom: -20px;
+  right: 10%;
+}
+
+.about2-wrap {
+  height: 40vh;
+  display: grid;
+  grid-template-columns: 60% 30%;
+  /* background-color: rgba(228, 228, 228, 0.736); */
+  width: 90%;
+  margin: 0 auto 5% auto;
+  
+}
+.about2-wrap-text h1 {
+  position: relative;
+  display: flex;
+  line-height: 60px;
+  color: #0d3762;
+  justify-content: start;
+  font-size: 60px;
+}
+.about2-wrap-text p {
+  text-align: start;
+  font-size: 40px;
+  color: #0d3762;
+}
+.about2-wrap-text {
+  margin-left: 20%;
+}
+.about2-wrap-image {
+  width: 400px;
+  height: 400px;
+  position: relative;
+  display: flex;
+  margin-left: 20%;
+  justify-content: center;
+  margin-bottom: auto;
+}
+.about2-wrap-image img {
+  position: absolute;
+}
+.about2-wrap-image img:first-of-type {
+  z-index: 0;
+  width: 300px;
+  height: 400px;
+  border-radius: 200px 200px;
+  border: 1px solid white;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 40%;
+}
+
+.about2-wrap-image img:last-of-type {
+  z-index: 1;
+  border-radius: 100px 100px ;
+  border: 1px solid white;
+  width: 200px;
+  height: 300px;
+  bottom: -20px;
+  right: 10%;
+}
+.about2-wrap-text .about-2 {
+  color: #59abae;
+  line-height: 0.1rem;
+  font-size: 20px;
+
+}
+.about2-wrap-text h1{
+font-size: 50px;
+}
+.about2-wrap-text .dream{
+  position: relative;
+  color:#59abae ;
+  line-height:1px;
+}
+.about2-wrap-text p{
+  font-size: 20px;
+    color: #0d3762;
+line-height: 30px;
+}
+.lol {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  width: 80%;
+}
+.lol p{
+  justify-content: center;
+  text-align: center;
+}.lol h1{
+  justify-content: center;
+  text-align: center;
+}
