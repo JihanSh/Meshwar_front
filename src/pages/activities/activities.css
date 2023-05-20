@@ -1,0 +1,254 @@
+
+
+.headnav-container img {
+  height: 150px;
+  width: 200px;
+}
+.slider::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(0, 0, 0, 0.5) 0%,
+    rgba(0, 0, 0, 0.8) 100%
+  );
+  z-index: 1;
+}
+.slider {
+  position: relative;
+  width: 100%;
+  height: 100dvh; /* Adjust height as needed */
+  overflow: hidden;
+  z-index: -1;
+}
+
+.slider img {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: opacity 1.1s linear;
+  object-fit: cover;
+  object-position: center;
+}
+
+.slider img.active {
+  opacity: 1;
+}
+.activity-select{
+  top:100%;
+
+}
+
+.activ-wrapper {
+  display: grid;
+  grid-row: 2;
+  gap: 5px;
+  color: white;
+  font-size: 25px;
+  width: 250px;
+  background-color: #0d3762;
+  height: 75px;
+  border-radius: 30px;
+  padding: 10px;
+}
+.loc-wrapper {
+  display: grid;
+  grid-row: 2;
+  gap: 5px;
+  color: white;
+  font-size: 25px;
+  width: 250px;
+  background-color: #0d3762;
+  height: 75px;
+  border-radius: 30px;
+  padding: 10px;
+}
+.go-button {
+  height: 50px;
+  width: 100px;
+  background-color: #0d3762;
+  border-radius: 20px;
+  transform: translate(0%, 40%);
+  color: white;
+  font-size: 20px;
+}
+.activity-select {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  z-index: 1;
+  top: 100%;
+  gap: 30px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.locationSelect {
+  border-radius: 20px;
+  height: 30px;
+  text-align: center;
+}
+.activitySelect {
+  border-radius: 20px;
+  height: 30px;
+  text-align: center;
+}
+
+/*autoprefixer and reset used*/
+/*Look best on a tall monitor with full page*/
+body {
+  padding: 20px 20px 0 20px;
+  /*this height is just to demonstrate what it looks to scroll past the bottom images*/
+  height: 100vh;
+  font: 100% 'Yanone Kaffeesatz', sans-serif;
+}
+.fixed-bar {
+  position: fixed;
+  top: 0;
+  left: 20px;
+  background: #fff;
+  z-index: 10
+}
+
+.body-wrapper {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding-bottom: 20px;
+  max-width: 1280px;
+  margin: 0 auto
+}
+.first, .wrapper {
+  height: 100vh;
+  /*Change as needed.  This prevents the smaller images from getting scrunched up*/
+  min-height: 600px;
+  flex-basis: 50%;
+  cursor: pointer;
+  
+  transition: flex-basis 0.4s ease-in-out 0.2s;
+  text-align: center;
+  overflow: hidden
+}
+.caption-header {
+  font-weight: 100;
+  background: #0d3762;
+  color: #fff;
+  height: 40px;
+  font-size: 2.5em;
+  transform: translateY(-100%);
+  transition: transform 0.3s ease-in-out 0.4s
+}
+.first:hover, .wrapper:hover {
+  flex-basis: 100%
+}
+.wrapper {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 20px
+}
+.background-wrapper {
+  flex-basis: 33.333%;
+  margin-bottom: 20px;
+  width: 100%;
+  transition: flex-basis 0.4s ease-in-out 0.2s;
+  cursor: pointer;
+  overflow: hidden
+}
+.background-attach {
+  background-attachment: scroll !important;
+  background-position: center center !important;
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
+.wrapper > div:last-child {
+  margin-bottom: 0
+}
+.background-wrapper:hover {
+  flex-basis: 100%
+}
+.first:hover > .caption-header, .background-wrapper:hover > .caption-header {
+  transform: translateY(0)
+}
+#large-image-one {
+  background: url("https://farm1.staticflickr.com/727/21673476679_3f001b18fe_h.jpg") fixed 10% 50% no-repeat
+}
+#first {
+  background: url("https://farm1.staticflickr.com/577/21675925938_e6f2cd0b97_h.jpg") fixed 20% 120% no-repeat
+}
+#second {
+  background: url("https://farm6.staticflickr.com/5670/21852371935_04848f1034_h.jpg") fixed center 120% no-repeat
+}
+#third {
+  background: url("https://farm6.staticflickr.com/5716/21861757341_08bd25c0cf_h.jpg") fixed 100% 50% no-repeat
+}
+#large-image-two {
+  background: url("https://farm6.staticflickr.com/5826/21853275615_c96fd8849c_h.jpg") fixed 80% 20% no-repeat
+}
+#fourth {
+  background: url("https://farm6.staticflickr.com/5793/21874899471_311e162554_h.jpg") fixed 100% 50% no-repeat
+}
+#fifth {
+  background: url("https://farm6.staticflickr.com/5627/21835359466_d0ae74e58f_h.jpg") fixed 100% 50% no-repeat
+}
+#sixth {
+ background: url("https://farm6.staticflickr.com/5652/21836113496_c56c3baaf8_h.jpg") fixed 100% 10% no-repeat 
+}
+
+.activities-wrapper{
+  margin: 10% auto 0 auto;
+  width: 100%;
+  
+}
+
+@media screen and (max-width: 768px) {
+  .activ-wrapper,
+  .loc-wrapper {
+    font-size: 20px;
+    width: 200px;
+    height: 60px;
+  }
+
+  .go-button {
+    height: 40px;
+    width: 80px;
+    font-size: 16px;
+  }
+
+  .locationSelect,
+  .activitySelect {
+    height: 25px;
+  }
+  .activity-select{
+    width: fit-content;
+  }
+}
+
+/* Media queries for phone screens */
+
+@media screen and (max-width: 480px) {
+  .activ-wrapper,
+  .loc-wrapper {
+    font-size: 18px;
+    width: 160px;
+    height: 50px;
+  }
+
+  .go-button {
+    height: 35px;
+    width: 70px;
+    font-size: 14px;
+  }
+
+  .locationSelect,
+  .activitySelect {
+    height: 20px;
+  }
+}

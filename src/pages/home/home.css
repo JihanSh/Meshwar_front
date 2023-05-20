@@ -4,7 +4,7 @@
   position: relative;
   width: 100%;
   height: 600px; /* Adjust height as needed */
-  margin: 0 auto;
+  margin: 5% auto;
 }
 
 .about-video {
@@ -16,7 +16,7 @@
   align-items: center;
 }
 .about-title {
-  margin-inline-start: 6em;
+  margin-inline-start: 4em;
 }
 
 .about-text {
@@ -28,8 +28,10 @@ h2 {
   margin-left: 0;
   text-align: start;
 }
-.about-text h1 {
+.about-text .title-abouthome {
   color: #0d3762;
+  font-size: 40px;
+  line-height: 0;
 }
 .about-text .about-description {
   font-size: 20px;
@@ -37,16 +39,14 @@ h2 {
   margin: 0 auto;
   color: #071b2f;
 }
-.about-text h2,
-h1 {
+.about-text .not
+{
   line-height: 0;
-  font-size: 50px;
-}
-.about-text h2 {
-  font-family: "Yellowtail", cursive;
+  font-size: 50px;  font-family: "Yellowtail", cursive;
   margin-left: -0.5rem;
   color: #59abae;
 }
+
 .about-video video {
   border-radius: 50%;
   filter: brightness(70%);
@@ -72,6 +72,8 @@ h1 {
   line-height: 1;
   color: #0d3762;
   margin-inline-start: 2em;
+    font-size: 40px;
+
 }
 
 .feedback-text {
@@ -128,7 +130,7 @@ h1 {
   background-color: #c6d1dc;
   position: absolute;
   right: 20px;
-  bottom: 10px;
+  bottom: 0px;
   border-bottom: 10px solid #0d3762;
 }
 
@@ -148,9 +150,7 @@ h1 {
     margin-left: 50px;
     margin-right: auto;
   }
-  .map-img {
-    display: none;
-  }
+
 
   .about-video {
     width: 100%;

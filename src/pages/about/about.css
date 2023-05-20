@@ -83,7 +83,7 @@
 }
 .about2-wrap-image {
   width: 400px;
-  height: 400px;
+  height: 450px;
   position: relative;
   display: flex;
   margin-left: 20%;
@@ -111,7 +111,7 @@
   width: 200px;
   height: 300px;
   bottom: -20px;
-  right: 10%;
+  left: -10%;
 }
 .about2-wrap-text .about-2 {
   color: #59abae;
@@ -121,11 +121,9 @@
 }
 .about2-wrap-text h1{
 font-size: 50px;
-}
-.about2-wrap-text .dream{
-  position: relative;
+}span{
+    font-size: 20px;
   color:#59abae ;
-  line-height:1px;
 }
 .about2-wrap-text p{
   font-size: 20px;

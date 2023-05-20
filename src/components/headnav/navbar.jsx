@@ -20,7 +20,7 @@ export const Navbar = () => {
         <Link to="/about" style={{ textdecoration: "none", color: "#0d3762" }}>
           <p>About</p>
         </Link>
-        <Link to="/places" style={{ textdecoration: "none", color: "#0d3762" }}>
+        <Link to="/activity" style={{ textdecoration: "none", color: "#0d3762" }}>
           <p>Places to go</p>
         </Link>
         <Link to="/">

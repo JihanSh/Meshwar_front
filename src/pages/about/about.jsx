@@ -13,7 +13,7 @@ const About = () => {
         </div>
         <div className="about-wrap-text">
           <h1>
-            Dare To live the Life <br /> you've always <br /> wanted
+            Dare To live the Life you've always wanted
           </h1>
           <p>
             Life is short and the world is wide. <br />
@@ -22,14 +22,13 @@ const About = () => {
         </div>
       </div>
       <div className="about2-wrap">
+          {/* <p className="about-2">About us</p> */}
         <div className="about2-wrap-text">
-          <p className="about-2">About us</p>
-          <h1>Our Plan is to fullfill your</h1>
-          <h1 className="dream">dream whish</h1>
+          <h1>Our Plan is to fullfill your dream wish</h1>
           <p>
             Life is short and the world is wide. <br />
             understand to achieve anything requires faith and belief in
-            yourself,vision, hard work, determination,and dedocation
+            yourself, vision, hard work, determination, and dedication
           </p>
           <div className="lol">
             <div className="hero-artworks">

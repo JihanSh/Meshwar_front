@@ -14,7 +14,7 @@ export const Header=()=>{
     useEffect(() => {
       const slideInterval = setInterval(() => {
         setCurrentImage((prevImage) => (prevImage + 1) % totalImages);
-      }, 2000); // Change slide interval as needed (in milliseconds)
+      }, 3000); 
 
       return () => {
         clearInterval(slideInterval);
