@@ -4,6 +4,7 @@
   justify-content: space-evenly;
   position:absolute;
   width: 100%;
+  height: 10vh;
   top: 2%;
   z-index: 1; /* Ensure the navigation appears above the slider */
   color:#0d3762;

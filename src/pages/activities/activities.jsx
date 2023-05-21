@@ -34,12 +34,7 @@ const Acivity = () => {
         ))}
       </div> */}
       <div className="activities-wrapper">
-        <div className="fixed-bar">
-          <label>
-            Turn off fixed background attachment
-            <input type="checkbox" id="turn-off" />
-          </label>
-        </div>
+
         <div className="body-wrapper">
           <div className="first background-div" id="large-image-one">
             <h2 className="caption-header">Swimming</h2>

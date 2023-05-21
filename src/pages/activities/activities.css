@@ -103,7 +103,6 @@
 /*autoprefixer and reset used*/
 /*Look best on a tall monitor with full page*/
 body {
-  padding: 20px 20px 0 20px;
   /*this height is just to demonstrate what it looks to scroll past the bottom images*/
   height: 100vh;
   font: 100% 'Yanone Kaffeesatz', sans-serif;
@@ -121,11 +120,11 @@ body {
   justify-content: space-around;
   align-items: center;
   padding-bottom: 20px;
-  max-width: 1280px;
+  max-width: 90%;
   margin: 0 auto
 }
 .first, .wrapper {
-  height: 100vh;
+  height: 90vh;
   /*Change as needed.  This prevents the smaller images from getting scrunched up*/
   min-height: 600px;
   flex-basis: 50%;
@@ -140,8 +139,8 @@ body {
   background: #0d3762;
   color: #fff;
   height: 40px;
-  font-size: 2.5em;
-  transform: translateY(-100%);
+  font-size:30px;
+  transform: translateY(-50%);
   transition: transform 0.3s ease-in-out 0.4s
 }
 .first:hover, .wrapper:hover {
@@ -157,7 +156,7 @@ body {
 .background-wrapper {
   flex-basis: 33.333%;
   margin-bottom: 20px;
-  width: 100%;
+  width: 90%;
   transition: flex-basis 0.4s ease-in-out 0.2s;
   cursor: pointer;
   overflow: hidden
@@ -178,28 +177,28 @@ body {
   transform: translateY(0)
 }
 #large-image-one {
-  background: url("https://farm1.staticflickr.com/727/21673476679_3f001b18fe_h.jpg") fixed 10% 50% no-repeat
+  background: url("../../assets/lake.webp") fixed 0% 70% no-repeat
 }
 #first {
-  background: url("https://farm1.staticflickr.com/577/21675925938_e6f2cd0b97_h.jpg") fixed 20% 120% no-repeat
+  background: url("../../assets/hiking.jpg") fixed 85% 120% no-repeat
 }
 #second {
-  background: url("https://farm6.staticflickr.com/5670/21852371935_04848f1034_h.jpg") fixed center 120% no-repeat
+  background: url("../../assets/beirutnight.jpeg") fixed 50% 0% no-repeat
 }
 #third {
-  background: url("https://farm6.staticflickr.com/5716/21861757341_08bd25c0cf_h.jpg") fixed 100% 50% no-repeat
+  background: url("../../assets/eating.jpg") fixed 100% 50% no-repeat
 }
 #large-image-two {
-  background: url("https://farm6.staticflickr.com/5826/21853275615_c96fd8849c_h.jpg") fixed 80% 20% no-repeat
+  background: url("https://farm6.staticflickr.com/5826/21853275615_c96fd8849c_h.jpg") fixed 85% 20% no-repeat
 }
 #fourth {
-  background: url("https://farm6.staticflickr.com/5793/21874899471_311e162554_h.jpg") fixed 100% 50% no-repeat
+  background: url("https://farm6.staticflickr.com/5793/21874899471_311e162554_h.jpg") fixed 30% 50% no-repeat
 }
 #fifth {
-  background: url("https://farm6.staticflickr.com/5627/21835359466_d0ae74e58f_h.jpg") fixed 100% 50% no-repeat
+  background: url("https://farm6.staticflickr.com/5627/21835359466_d0ae74e58f_h.jpg") fixed 30% 50% no-repeat
 }
 #sixth {
- background: url("https://farm6.staticflickr.com/5652/21836113496_c56c3baaf8_h.jpg") fixed 100% 10% no-repeat 
+ background: url("https://farm6.staticflickr.com/5652/21836113496_c56c3baaf8_h.jpg") fixed 30% 10% no-repeat 
 }
 
 .activities-wrapper{

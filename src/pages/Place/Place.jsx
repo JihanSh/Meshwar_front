@@ -12,13 +12,26 @@ const Place = () => {
         console.log(data);
         setPlace(data);
       });
-  };
+    };
+const handleImageClick = (locationId) => {
+  fetch(`http://localhost:5000/place/list/${locationId}`)
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data);
+      setPlace(data);
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+};
+
 
   useEffect(() => {
     getPlacebyId(id);
+    handleImageClick(id);
   }, []);
 
-  return <div>Place</div>;
+  return <div><h1>{place.description}</h1></div>;
 };
 
 export default Place;

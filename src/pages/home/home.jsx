@@ -9,6 +9,9 @@ import { Link, useNavigate } from "react-router-dom";
 import { Header } from "../../components/headnav/header";
 import Swiper from "swiper";
 import "swiper/swiper-bundle.min.css";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 const Home = () => {
   const [feedbacks, setFeedbacks] = useState([]);
@@ -20,6 +23,7 @@ const Home = () => {
   const [selectedActivity, setSelectedActivity] = useState("");
   const [selectedLocation, setSelectedLocation] = useState("");
   const [filteredPlaces, setFilteredPlaces] = useState([]);
+
 
   const navigate = useNavigate();
   useEffect(() => {
@@ -33,7 +37,7 @@ const Home = () => {
         setLoading(false);
       }
     };
-// Fetch activities
+    // Fetch activities
     fetch("http://localhost:5000/activity")
       .then((response) => response.json())
       .then((data) => setActivities(data));
@@ -42,54 +46,57 @@ const Home = () => {
     fetch("http://localhost:5000/location")
       .then((response) => response.json())
       .then((data) => setLocations(data));
-  
     fetchFeedbacks();
+
+    fetch("http://localhost:5000/location")
+    .then((response) => response.json())
+    .then((data)=>setLocations(data))
   }, []);
 
   useEffect(() => {
-        const swiper = new Swiper(".swiper-slider", {
-          // Optional parameters
-          centeredSlides: true,
-          slidesPerView: 1,
-          grabCursor: true,
-          freeMode: false,
-          loop: true,
-          mousewheel: false,
-          keyboard: {
-            enabled: true,
-          },
+    const swiper = new Swiper(".swiper-slider", {
+      // Optional parameters
+      centeredSlides: true,
+      slidesPerView: 1,
+      grabCursor: true,
+      freeMode: false,
+      loop: true,
+      mousewheel: false,
+      keyboard: {
+        enabled: true,
+      },
 
-          // Enabled autoplay mode
-          autoplay: {
-            delay: 3000,
-            disableOnInteraction: false,
-          },
+      // Enabled autoplay mode
+      autoplay: {
+        delay: 3000,
+        disableOnInteraction: false,
+      },
 
-          // If we need pagination
-          pagination: {
-            el: ".swiper-pagination",
-            dynamicBullets: false,
-            clickable: true,
-          },
+      // If we need pagination
+      pagination: {
+        el: ".swiper-pagination",
+        dynamicBullets: false,
+        clickable: true,
+      },
 
-          // If we need navigation
-          navigation: {
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
-          },
+      // If we need navigation
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
 
-          // Responsive breakpoints
-          breakpoints: {
-            640: {
-              slidesPerView: 1.25,
-              spaceBetween: 20,
-            },
-            1024: {
-              slidesPerView: 2,
-              spaceBetween: 20,
-            },
-          },
-        });
+      // Responsive breakpoints
+      breakpoints: {
+        640: {
+          slidesPerView: 1.25,
+          spaceBetween: 20,
+        },
+        1024: {
+          slidesPerView: 2,
+          spaceBetween: 20,
+        },
+      },
+    });
     const slideInterval = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % feedbacks.length);
     }, 5000); // Change slide interval as needed (in milliseconds)
@@ -134,7 +141,21 @@ const Home = () => {
   const submitChange = (event) => {
     setSelectedLocation(event.target.value);
   };
-
+  const sliderSettings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3, // Adjust the number of slides to show at a time
+    slidesToScroll: 1,
+    responsive: [
+      {
+        breakpoint: 768, // Adjust the breakpoint as needed
+        settings: {
+          slidesToShow: 1, // Adjust the number of slides to show at a time on smaller screens
+        },
+      },
+    ],
+  };
   return (
     <>
       <Header />
@@ -237,6 +258,20 @@ const Home = () => {
         <div className="about-video">
           <video src={lebanon} autoPlay muted loop></video>
         </div>
+      </div>
+      <div className="slider-container">
+        <Slider {...sliderSettings}>
+          {locations.map((location) => (
+            <div className="location-card" key={location._id}>
+              <h3>{location.name}</h3>
+              <img
+                src={location.mainImage}
+                alt={location.name}
+                onClick={() => navigate(`/place/${location._id}`)}
+              />
+            </div>
+          ))}
+        </Slider>
       </div>
       <div>
         <h1 className="feedback-title">What Visitors are Saying?</h1>
