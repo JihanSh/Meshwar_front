@@ -23,7 +23,7 @@ export const Header=()=>{
 
     return (
       <>
-        <div>
+        <div className="cloud">
           <div className="slider">
             {images.map((image, index) => (
               <img

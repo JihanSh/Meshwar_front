@@ -57,7 +57,7 @@ const Home = () => {
     const swiper = new Swiper(".swiper-slider", {
       // Optional parameters
       centeredSlides: true,
-      slidesPerView: 1,
+      slidesPerView: 2,
       grabCursor: true,
       freeMode: false,
       loop: true,
@@ -92,8 +92,8 @@ const Home = () => {
           spaceBetween: 20,
         },
         1024: {
-          slidesPerView: 2,
-          spaceBetween: 20,
+          slidesPerView: 3,
+          // spaceBetween: 20,
         },
       },
     });
@@ -134,8 +134,7 @@ const Home = () => {
         .then((response) => response.json())
         .then((data) => setFilteredPlaces(data));
     }
-    setSelectedActivity("");
-    setSelectedLocation("");
+
   };
 
   const submitChange = (event) => {
@@ -195,34 +194,31 @@ const Home = () => {
           Go
         </button>
       </div>
-      <ul>
-        {filteredPlaces.map((place, key) => (
-          <li key={place.id}>
-            <h3>{place.name}</h3>
-            <section className="section slider-section">
-              <div className="container slider-column">
-                <div className="swiper swiper-slider">
-                  <div className="swiper-wrapper">
-                    <div>
-                      {place.images.map((image) => (
-                        <img
-                          key={image.id}
-                          src={image.url}
-                          alt={image.alt}
-                          onClick={() => navigate(`/place/${place._id}`)}
-                        />
-                      ))}
-                    </div>
-                  </div>
-                  <span className="swiper-pagination"></span>
-                  <span className="swiper-button-prev"></span>
-                  <span className="swiper-button-next"></span>
+      <div className="swiper swiper-slider">
+        <div className="swiper-wrapper">
+          {filteredPlaces.map((place, key) =>
+            place.images.map((image) => (
+              <div className="swiper-slide" key={image.id}>
+                <img
+                  className="carousel-img"
+                  src={image.url}
+                  alt={image.alt}
+                  onClick={() =>
+                    navigate("/place", { state: { id: place._id } })
+                  }
+                />
+                <div className="image-name-container">
+                  <div className="image-name">{place.name}</div>
                 </div>
               </div>
-            </section>
-          </li>
-        ))}
-      </ul>
+            ))
+          )}
+        </div>
+        <div className="swiper-pagination"></div>
+        <div className="swiper-button-prev"></div>
+        <div className="swiper-button-next"></div>
+      </div>
+
       <div className="about-container">
         <div className="about-text">
           <div className="about-title">
@@ -237,7 +233,7 @@ const Home = () => {
             </h2>
             <h1 className="title-abouthome">Dreaming</h1>
           </div>
-          <p className="about-description">
+          <p >
             If you are looking for a destination that offers rich history,
             stunning landscapes, and vibrant culture, then look no further than
             Lebanon! This beautiful country is a hidden gem waiting to be
@@ -267,13 +263,15 @@ const Home = () => {
               <img
                 src={location.mainImage}
                 alt={location.name}
-                onClick={() => navigate(`/place/${location._id}`)}
+                onClick={() =>
+                  navigate("/location", { state: { location: location._id } })
+                }
               />
             </div>
           ))}
         </Slider>
       </div>
-      <div>
+      <div className="feedback-container">
         <h1 className="feedback-title">What Visitors are Saying?</h1>
         <div className="home-feedback">
           <div className="for-absolue">

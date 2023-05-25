@@ -53,7 +53,7 @@
   color: white;
   font-size: 25px;
   width: 250px;
-  background-color: #0d3762;
+  background-color: #59abae;
   height: 75px;
   border-radius: 30px;
   padding: 10px;
@@ -65,7 +65,7 @@
   color: white;
   font-size: 25px;
   width: 250px;
-  background-color: #0d3762;
+  background-color: #59abae;
   height: 75px;
   border-radius: 30px;
   padding: 10px;
@@ -73,7 +73,7 @@
 .go-button {
   height: 50px;
   width: 100px;
-  background-color: #0d3762;
+  background-color: #59abae;
   border-radius: 20px;
   transform: translate(0%, 40%);
   color: white;
@@ -225,9 +225,7 @@ body {
   .activitySelect {
     height: 25px;
   }
-  .activity-select{
-    width: fit-content;
-  }
+
 }
 
 /* Media queries for phone screens */
@@ -235,15 +233,16 @@ body {
 @media screen and (max-width: 480px) {
   .activ-wrapper,
   .loc-wrapper {
-    font-size: 18px;
+    font-size: 16px;
     width: 160px;
     height: 50px;
   }
-
-  .go-button {
+  .activity-select{
+    width: 100%;
+  }  .go-button {
     height: 35px;
     width: 70px;
-    font-size: 14px;
+    font-size: 16px;
   }
 
   .locationSelect,
