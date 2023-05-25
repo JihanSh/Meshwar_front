@@ -8,6 +8,7 @@ import Activity from "./pages/activities/activities.jsx";
 import PlacebyLocation from "./pages/Place/PlacebyLocation";
 import PlaceSelect from "./pages/Place/PlaceSelect";
 import Contact from "./pages/contact/contact";
+import Places from "./pages/Place/placebyActivity";
 function App() {
   return (
     <BrowserRouter>
@@ -18,6 +19,7 @@ function App() {
           <Route path="/about" element={<About />}></Route>
           <Route path="/activity" element={<Activity />}></Route>
           <Route path="/place" element={<PlaceSelect />}></Route>
+          <Route path="/places" element={<Places />}></Route>
           <Route path="/location" element={<PlacebyLocation />}></Route>
           <Route path="/contact" element={<Contact />}></Route>
         </Routes>

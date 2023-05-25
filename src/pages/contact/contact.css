@@ -71,7 +71,7 @@ p.main-jumbotron-text {
   border-bottom: 1px;
   border-style: none none solid none;
   border-radius: 0;
-  border-color: #000;
+  border-color: white;
 }
 
 .form-group .form-control:focus {

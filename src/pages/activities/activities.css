@@ -1,252 +1,73 @@
-
-
-.headnav-container img {
-  height: 150px;
-  width: 200px;
+.imageGrid {
+  line-height: 0;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 8%;
 }
-.slider::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(
-    ellipse at center,
-    rgba(0, 0, 0, 0.5) 0%,
-    rgba(0, 0, 0, 0.8) 100%
-  );
-  z-index: 1;
-}
-.slider {
-  position: relative;
-  width: 100%;
-  height: 100dvh; /* Adjust height as needed */
+
+.imageGrid .tile {
+  width: 33.33%;
+  min-height: 20em;
+  line-height: 1.2;
+  display: inline-block;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
   overflow: hidden;
-  z-index: -1;
+  position: relative;
+  color: #fff;
+  font-family: "Verdana", sans-serif;
+  text-shadow: 2px 2px 2px #000;
+  cursor: pointer;
+  cursor: hand;
 }
 
-.slider img {
+.imageGrid .tile:before {
+  content: "";
+  background-color: rgba(15, 15, 15, 0.5);
+  display: block;
   width: 100%;
   height: 100%;
+  z-index: 0;
   position: absolute;
-  top: 0;
-  left: 0;
-  opacity: 0;
-  transition: opacity 1.1s linear;
-  object-fit: cover;
-  object-position: center;
 }
 
-.slider img.active {
-  opacity: 1;
-}
-.activity-select{
-  top:100%;
-
+.imageGrid .tile:hover:before {
+  display: none;
 }
 
-.activ-wrapper {
-  display: grid;
-  grid-row: 2;
-  gap: 5px;
-  color: white;
-  font-size: 25px;
-  width: 250px;
-  background-color: #59abae;
-  height: 75px;
-  border-radius: 30px;
-  padding: 10px;
-}
-.loc-wrapper {
-  display: grid;
-  grid-row: 2;
-  gap: 5px;
-  color: white;
-  font-size: 25px;
-  width: 250px;
-  background-color: #59abae;
-  height: 75px;
-  border-radius: 30px;
-  padding: 10px;
-}
-.go-button {
-  height: 50px;
-  width: 100px;
-  background-color: #59abae;
-  border-radius: 20px;
-  transform: translate(0%, 40%);
-  color: white;
-  font-size: 20px;
-}
-.activity-select {
+.imageGrid .tile .textWrapper {
+  text-align: center;
+  vertical-align: middle;
+  width: 80%;
   position: absolute;
-  display: flex;
-  flex-direction: row;
-  z-index: 1;
-  top: 100%;
-  gap: 30px;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-}
-.locationSelect {
-  border-radius: 20px;
-  height: 30px;
-  text-align: center;
-}
-.activitySelect {
-  border-radius: 20px;
-  height: 30px;
-  text-align: center;
+  font-size: 0.75em;
 }
 
-/*autoprefixer and reset used*/
-/*Look best on a tall monitor with full page*/
-body {
-  /*this height is just to demonstrate what it looks to scroll past the bottom images*/
-  height: 100vh;
-  font: 100% 'Yanone Kaffeesatz', sans-serif;
-}
-.fixed-bar {
-  position: fixed;
-  top: 0;
-  left: 20px;
-  background: #fff;
-  z-index: 10
+.imageGrid .tile .textWrapper .content {
+  display: none;
 }
 
-.body-wrapper {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  padding-bottom: 20px;
-  max-width: 90%;
-  margin: 0 auto
-}
-.first, .wrapper {
-  height: 90vh;
-  /*Change as needed.  This prevents the smaller images from getting scrunched up*/
-  min-height: 600px;
-  flex-basis: 50%;
-  cursor: pointer;
-  
-  transition: flex-basis 0.4s ease-in-out 0.2s;
-  text-align: center;
-  overflow: hidden
-}
-.caption-header {
-  font-weight: 100;
-  background: #0d3762;
-  color: #fff;
-  height: 40px;
-  font-size:30px;
-  transform: translateY(-50%);
-  transition: transform 0.3s ease-in-out 0.4s
-}
-.first:hover, .wrapper:hover {
-  flex-basis: 100%
-}
-.wrapper {
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: space-between;
-  align-items: center;
-  padding-left: 20px
-}
-.background-wrapper {
-  flex-basis: 33.333%;
-  margin-bottom: 20px;
-  width: 90%;
-  transition: flex-basis 0.4s ease-in-out 0.2s;
-  cursor: pointer;
-  overflow: hidden
-}
-.background-attach {
-  background-attachment: scroll !important;
-  background-position: center center !important;
-  -webkit-transform: translate3d(0, 0, 0);
-  transform: translate3d(0, 0, 0);
-}
-.wrapper > div:last-child {
-  margin-bottom: 0
-}
-.background-wrapper:hover {
-  flex-basis: 100%
-}
-.first:hover > .caption-header, .background-wrapper:hover > .caption-header {
-  transform: translateY(0)
-}
-#large-image-one {
-  background: url("../../assets/lake.webp") fixed 0% 70% no-repeat
-}
-#first {
-  background: url("../../assets/hiking.jpg") fixed 85% 120% no-repeat
-}
-#second {
-  background: url("../../assets/beirutnight.jpeg") fixed 50% 0% no-repeat
-}
-#third {
-  background: url("../../assets/eating.jpg") fixed 100% 50% no-repeat
-}
-#large-image-two {
-  background: url("https://farm6.staticflickr.com/5826/21853275615_c96fd8849c_h.jpg") fixed 85% 20% no-repeat
-}
-#fourth {
-  background: url("https://farm6.staticflickr.com/5793/21874899471_311e162554_h.jpg") fixed 30% 50% no-repeat
-}
-#fifth {
-  background: url("https://farm6.staticflickr.com/5627/21835359466_d0ae74e58f_h.jpg") fixed 30% 50% no-repeat
-}
-#sixth {
- background: url("https://farm6.staticflickr.com/5652/21836113496_c56c3baaf8_h.jpg") fixed 30% 10% no-repeat 
+.imageGrid .tile:hover .textWrapper .content {
+  display: block;
 }
 
-.activities-wrapper{
-  margin: 10% auto 0 auto;
-  width: 100%;
-  
+.imageGrid .tile:hover .textWrapper .content h2 {
+  margin: 0;
 }
 
-@media screen and (max-width: 768px) {
-  .activ-wrapper,
-  .loc-wrapper {
-    font-size: 20px;
-    width: 200px;
-    height: 60px;
+@media (max-width: 1000px) {
+  .imageGrid .tile {
+    width: 50%;
   }
-
-  .go-button {
-    height: 40px;
-    width: 80px;
-    font-size: 16px;
-  }
-
-  .locationSelect,
-  .activitySelect {
-    height: 25px;
-  }
-
 }
 
-/* Media queries for phone screens */
-
-@media screen and (max-width: 480px) {
-  .activ-wrapper,
-  .loc-wrapper {
-    font-size: 16px;
-    width: 160px;
-    height: 50px;
-  }
-  .activity-select{
+@media (max-width: 700px) {
+  .imageGrid .tile {
     width: 100%;
-  }  .go-button {
-    height: 35px;
-    width: 70px;
-    font-size: 16px;
-  }
-
-  .locationSelect,
-  .activitySelect {
-    height: 20px;
   }
 }
