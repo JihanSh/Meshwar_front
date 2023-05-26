@@ -3,10 +3,81 @@
   display: flex;
   justify-content: space-between;
   position: relative;
-  height: 600px; /* Adjust height as needed */
-  margin: 5% 5%;
+  height: 60vh; 
+  margin: 0 5% 5% ;
+}
+.activity-select{
+  top:100%;
+
+}
+.go-button {
+  height: 50px;
+  width: 100px;
+  padding: 15px 25px;
+  border: unset;
+  border-radius: 15px;
+  color: #071b2f;
+  z-index: 1;
+margin-top: 3%;
+  background: #e8e8e8;
+  position: relative;
+  font-weight: 1000;
+  font-size: 17px;
+  -webkit-box-shadow: 1px 4px 19px -1px #0d3762a4;
+  box-shadow: 1px 1px 19px -2px #155a9e80;
+  transition: all 250ms;
+  overflow: hidden;
+}
+.activity-select {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  z-index: 1;
+  top: 100%;
+  gap: 30px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.locationSelect {
+  border-radius: 20px;
+  height: 30px;
+  text-align: center;
+}
+.activitySelect {
+  border-radius: 20px;
+  height: 30px;
+  text-align: center;
 }
 
+.activ-wrapper {
+  display: grid;
+  grid-row: 2;
+  gap: 5px;
+  color: white;
+  font-size: 25px;
+  width: 250px;
+  background-color: #0d3762;
+  height: 75px;
+  border-radius: 30px;
+  padding: 10px;
+}
+.loc-wrapper {
+  display: grid;
+  grid-row: 2;
+  gap: 5px;
+  color: white;
+  font-size: 25px;
+  width: 250px;
+  background-color: #0d3762;
+  height: 75px;
+  border-radius: 30px;
+  padding: 10px;
+}
+.loc-wrapper label{
+  color: white;
+}.activ-wrapper label{
+  color: white;
+}
 .about-video {
   position: relative;
   transform: rotate(-90deg);
@@ -22,10 +93,10 @@
   font-size: 1.5rem;
 }
 
-.about-text .title-abouthome {
+.about-text .about-title .title-abouthome {
   color: #0d3762;
   font-size: 40px;
-  line-height: 0;
+  line-height: 1.5;
 }
 .about-text .about-description {
   font-size: 20px;
@@ -48,8 +119,7 @@
   object-fit: cover;
   height: 90%;
 }
-.about-button,
-.go-button {
+.about-button{
   padding: 15px 25px;
   border: unset;
   border-radius: 15px;
@@ -65,6 +135,7 @@
   box-shadow: 1px 1px 19px -2px #155a9e80;
   transition: all 250ms;
   overflow: hidden;
+  margin-top: 2%;
 }
 
 .about-button::before {
@@ -81,16 +152,29 @@
   box-shadow: 4px 8px 19px -3px #0d3762;
   transition: all 250ms;
 }
-.go-button:hover {
-  background-color: white;
-  color: #0d3762;
+.go-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0;
+  border-radius: 15px;
+  background-color: #0d3762;
   z-index: -1;
-  /* -webkit-box-shadow: 4px 8px 19px -3px #0d3762; */
-  /* box-shadow: 4px 8px 19px -3px #0d3762; */
+  -webkit-box-shadow: 4px 8px 19px -3px #0d3762;
+  box-shadow: 4px 8px 19px -3px #0d3762;
   transition: all 250ms;
+}
+.go-button:hover{
+    color: #e8e8e8;
+
 }
 .about-button:hover {
   color: #e8e8e8;
+}
+.go-button:hover::before {
+  width: 100%;
 }
 
 .about-button:hover::before {
@@ -272,7 +356,11 @@
   .about-container {
     display: flex;
     flex-direction: column;
-  }
+  }.about-text .title-abouthome {
+  color: #0d3762;
+  font-size: 40px;
+  line-height: 2;
+}
 
   .about-video video {
     width: 65%;
@@ -293,7 +381,10 @@
     margin-right: auto;
   }
   .activity-select {
-    width: 70%;
+    width: 100%;
+  }
+  .about-button{
+    margin-top: 2%;
   }
   .about-video {
     width: 100%;

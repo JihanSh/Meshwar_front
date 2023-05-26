@@ -24,11 +24,19 @@ const Home = () => {
   const [selectedLocation, setSelectedLocation] = useState("");
   const [filteredPlaces, setFilteredPlaces] = useState([]);
 
-
+  
   const navigate = useNavigate();
   useEffect(() => {
     const fetchFeedbacks = async () => {
       try {
+axios
+  .get("http://localhost:5000/location")
+  .then((response) => {
+    setLocations(response.data);
+  })
+  .catch((error) => {
+    console.error(error);
+  });
         const response = await axios.get("http://localhost:5000/feedback");
         setFeedbacks(response.data);
         setLoading(false);
@@ -43,14 +51,10 @@ const Home = () => {
       .then((data) => setActivities(data));
 
     // Fetch locations
-    fetch("http://localhost:5000/location")
-      .then((response) => response.json())
-      .then((data) => setLocations(data));
     fetchFeedbacks();
 
-    fetch("http://localhost:5000/location")
-    .then((response) => response.json())
-    .then((data)=>setLocations(data))
+    
+    {console.log(setLocations)}
   }, []);
 
   useEffect(() => {
@@ -233,7 +237,7 @@ const Home = () => {
             </h2>
             <h1 className="title-abouthome">Dreaming</h1>
           </div>
-          <p >
+          <p>
             If you are looking for a destination that offers rich history,
             stunning landscapes, and vibrant culture, then look no further than
             Lebanon! This beautiful country is a hidden gem waiting to be
@@ -256,6 +260,8 @@ const Home = () => {
         </div>
       </div>
       <div className="slider-container">
+        <h1 className="feedback-title">Which City You'd Like to Visit?</h1>
+
         <Slider {...sliderSettings}>
           {locations.map((location) => (
             <div className="location-card" key={location._id}>

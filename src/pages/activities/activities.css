@@ -16,9 +16,9 @@
   background-repeat: no-repeat;
   overflow: hidden;
   position: relative;
-  color: #fff;
+  color: #ffffff;
   font-family: "Verdana", sans-serif;
-  text-shadow: 2px 2px 2px #000;
+  text-shadow: 2px 2px 2px #0d3762a6;
   cursor: pointer;
   cursor: hand;
 }
@@ -54,10 +54,12 @@
 
 .imageGrid .tile:hover .textWrapper .content {
   display: block;
+  color: #ffffff;
 }
 
 .imageGrid .tile:hover .textWrapper .content h2 {
   margin: 0;
+  color: #ffffff;
 }
 
 @media (max-width: 1000px) {

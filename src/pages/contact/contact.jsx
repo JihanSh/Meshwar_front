@@ -68,8 +68,8 @@ const Contact = () => {
     }
   };
   return (
-    <>
-      <Navbar />
+    <div className='contact-wrapper'>
+      
         <div className="jumbotron"></div>
         <div className="jumbotron-text">
           <h1>Travel with us.</h1>
@@ -150,7 +150,7 @@ const Contact = () => {
             </form>{" "}
           </div>
       </div>
-    </>
+    </div>
   );
 }
 
