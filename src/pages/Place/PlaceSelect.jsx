@@ -19,13 +19,10 @@ const PlaceSelect = () => {
     getPlacebyId(id);
   }, []);
   return (
-    <div>
           <>
             <h1>{place.name}</h1>
             <h1>{place.description}</h1>
           </>
-     
-    </div>
   );
 };
 

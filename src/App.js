@@ -8,7 +8,9 @@ import Activity from "./pages/activities/activities.jsx";
 import PlacebyLocation from "./pages/Place/PlacebyLocation";
 import PlaceSelect from "./pages/Place/PlaceSelect";
 import Contact from "./pages/contact/contact";
-import Places from "./pages/Place/placebyActivity";
+import PlacebyActivity from "./pages/Place/placebyActivity";
+import PlaceInfo from "./pages/Place/place";
+import LoginForm from "./pages/login/login";
 function App() {
   return (
     <BrowserRouter>
@@ -18,10 +20,12 @@ function App() {
           <Route path="/" element={<Home />}></Route>
           <Route path="/about" element={<About />}></Route>
           <Route path="/activity" element={<Activity />}></Route>
-          <Route path="/place" element={<PlaceSelect />}></Route>
-          <Route path="/places" element={<Places />}></Route>
+          <Route path="/places" element={<PlaceSelect />}></Route>
+          <Route path="/placebyactivity" element={<PlacebyActivity />}></Route>
           <Route path="/location" element={<PlacebyLocation />}></Route>
           <Route path="/contact" element={<Contact />}></Route>
+          <Route path="/login" element={<LoginForm />}></Route>
+          <Route path="/placeInfo" element={<PlaceInfo />}></Route>
         </Routes>
         <Footer />
       </div>

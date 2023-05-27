@@ -2,10 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 const Activity = () => {
   const [activities, setActivities] = useState([]);
-
-  useEffect(() => {
-    getAllActivities();
-  }, []);
+  const navigate = useNavigate();
   const getAllActivities = async () => {
     try {
       const response = await fetch("http://localhost:5000/activity");
@@ -14,8 +11,11 @@ const Activity = () => {
     } catch (err) {
       console.error(err);
     }
-  };  const navigate = useNavigate();
-
+  };
+  useEffect(() => {
+  getAllActivities();
+  }, []);
+  
   return (
     <div className="imageGrid">
       {activities.map((activity) => (
@@ -23,7 +23,7 @@ const Activity = () => {
           key={activity._id}
           className="tile"
           style={{ backgroundImage: `url(${activity.mainImage})` }}
-          onClick={() => navigate("/places", { state: { id: activity._id } })}
+          onClick={() => navigate("/placebyactivity", { state: { activity: activity._id } })}
         >
           <div className="textWrapper">
             <h2>{activity.title}</h2>

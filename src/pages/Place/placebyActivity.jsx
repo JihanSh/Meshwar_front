@@ -2,41 +2,42 @@ import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import "./place.css";
 
-const Place = () => {
-  const [places, setPlaces] = useState([]);
-  let place = useLocation();
-  let placeId = place.state.location;
-
-  const handleImageClick = (placeId) => {
-    fetch(`http://localhost:5000/place/list/${placeId}`)
-      .then((response) => response.json())
-      .then((data) => {
-        setPlaces(data);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  };
+const PlacebyActivity = () => {
+  const [place, setPlace] = useState([ ]);
+  const acPlace = useLocation();
+  const activityId = acPlace.state.activity;
 
   useEffect(() => {
-    handleImageClick(placeId);
-  }, []);
+    const fetchPlace = async () => {
+      try {
+        const response = await fetch(
+          `http://localhost:5000/place/showByActivity/${activityId}`
+        );
+        const data = await response.json();
+        setPlace(data);
+        console.log(data)
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchPlace();
+  }, [activityId]);
 
   return (
     <div className="grid-container">
-      {Array.isArray(places) && places.length > 0 ? (
-        places.map((each, index) => (
-          <div className="places-wrapper" key={index}>
-            <h1>{each.name}</h1>
-            <img src={each.mainImage} alt="Place" />
-            <h1>{each.description}</h1>
-          </div>
-        ))
-      ) : (
-        <p>No places found.</p>
-      )}
+      {place.map((each) => (
+        <div className="places-wrapper" key={place._id}>
+          <h1>{each.name}</h1>
+          <img
+            src={each.mainImage}
+            alt="Location"
+          />
+          <h1>{each.description}</h1>
+        </div>
+      ))}
     </div>
   );
 };
 
-export default Place;
+export default PlacebyActivity;

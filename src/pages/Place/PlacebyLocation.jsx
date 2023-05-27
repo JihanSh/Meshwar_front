@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation,useNavigate } from "react-router-dom";
 import "./place.css";
 
-const Place = () => {
+const PlacebyLocation = () => {
   const [location, setLocation] = useState([]);
   let loc = useLocation();
   let locId = loc.state.location;
+  const navigate = useNavigate();
 
   const handleImageClick = (locationId) => {
     fetch(`http://localhost:5000/place/list/${locationId}`)
@@ -24,10 +25,16 @@ const Place = () => {
 
   return (
     <div className="grid-container">
-      {location.map((each, index) => (
-        <div className="places-wrapper" key={index}>
+      {location.map((each) => (
+        <div className="places-wrapper" key={location._id}>
           <h1>{each.name}</h1>
-          <img src={each.mainImage} alt="Location" />
+          <img
+            src={each.mainImage}
+            alt="Location"
+            onClick={() =>
+              navigate("/place", { state: { each: location._id } })
+            }
+          />
           <h1>{each.description}</h1>
         </div>
       ))}
@@ -35,4 +42,4 @@ const Place = () => {
   );
 };
 
-export default Place;
+export default PlacebyLocation;
