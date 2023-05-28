@@ -4,19 +4,26 @@
   bottom: 0;
   height: 25vh;
 }
+.contact-footer{
+  color: #9ea0a9;
+  width: min-content;
 
+}.contact-footer .text{
+  color: #9ea0a9;
+
+}
 .footer-content {
   position: relative;
 }
 .flex-footer{
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: space-around;
 }
-.footer-content:before {
+/* .footer-content:before {
   position: absolute;
   content: '';
-  background: url("../../assets/lebanon\ outline.png    ");
+
   width: 200px;
   height: 25vh;
   right: 5%;
@@ -42,7 +49,7 @@
   -o-animation-duration: 30s;
   -o-animation-iteration-count: infinite;
   -o-animation-timing-function: linear;
-}
+} */
 
 .footer-content .logo-widget {
   position: relative;
@@ -79,7 +86,9 @@
 .footer-content .logo-widget .logo-box {
   margin-bottom: 25px;
 }
-
+.logo-box{
+  margin-top: 5%;
+}
 .footer-content .logo-widget .text p {
   color: #9ea0a9;
   margin-bottom: 32px;
@@ -125,11 +134,11 @@
 
 /** footer-bottom **/
 
-.footer-bottom {
+/* .footer-bottom {
   position: relative;
   background: #13151a;
   padding: 25px 0px 22px 0px;
-}
+} */
 
 .footer-bottom .copyright,
 .footer-bottom .copyright a,

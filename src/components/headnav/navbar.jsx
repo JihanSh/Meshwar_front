@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import meshwar from "../../assets/meshwar.png";
-import { useLocation } from 'react-router-dom';
+import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 import "./header-navbar.css";
 
@@ -21,13 +21,13 @@ export const Navbar = () => {
     hamburger.classList.toggle("toggle");
   };
 
+  const isHomePage = location.pathname === "/";
+
   return (
     <nav>
       <div
         className={
-          location.pathname === "/"
-            ? "headnav-container headnav_active"
-            : "headnav-container"
+          isHomePage ? "headnav-container headnav_active" : "headnav-container"
         }
       >
         <div className="hamburger" onClick={handleHamburgerClick}>
@@ -39,43 +39,60 @@ export const Navbar = () => {
           <li>
             <Link
               to="/about"
-              style={{ textdecoration: "none", color: "#ffffff" }}
+              style={{
+                textDecoration: "none",
+                color: isHomePage ? "#ffffff" : "#0d3762",
+              }}
             >
               <p>About</p>
-            </Link>{" "}
+            </Link>
           </li>
           <li>
             <Link
               to="/activity"
-              style={{ textdecoration: "none", color: "#ffffff" }}
+              style={{
+                textDecoration: "none",
+                color: isHomePage ? "#ffffff" : "#0d3762",
+              }}
             >
               <p>Places to go</p>
-            </Link>{" "}
+            </Link>
           </li>
           <li>
-            <Link to="/">
+            <Link
+              to="/"
+              style={{
+                textDecoration: "none",
+                color: isHomePage ? "#ffffff" : "#0d3762",
+              }}
+            >
               <img src={meshwar} alt="Meshwar" />
-            </Link>{" "}
+            </Link>
           </li>
           <li>
             <Link
               to="/contact"
-              style={{ textdecoration: "none", color: "#0d3762" }}
+              style={{
+                textDecoration: "none",
+                color: isHomePage ? "#ffffff" : "#0d3762",
+              }}
             >
               <p>Contact us</p>
-            </Link>{" "}
+            </Link>
           </li>
           <li>
             <Link
               to="/login"
-              style={{ textdecoration: "none", color: "#0d3762" }}
+              style={{
+                textDecoration: "none",
+                color: isHomePage ? "#ffffff" : "#0d3762",
+              }}
             >
               <p>Login</p>
-            </Link>{" "}
+            </Link>
           </li>
         </ul>
       </div>
     </nav>
   );
 };
-

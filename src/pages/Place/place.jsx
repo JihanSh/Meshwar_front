@@ -7,20 +7,23 @@ import "./place.css";
 
 const PlaceInfo = () => {
   const [placeInfo, setPlaceInfo] = useState({});
-  const {id} = useParams(); 
-  let place = useLocation();
-  let placeId = place.state.each;
+  const [images, setImages] = useState([]);
+  const [rating, setRating] = useState(0);
+  const place = useLocation();
+  const placeId = place.state.each;
+
   useEffect(() => {
-    handleImageClick(placeId);
-    console.log("place",placeId)
+    handleImageClick();
   }, [placeId]);
+
   const handleImageClick = () => {
-    fetch(`http://localhost:5000/place/${id}`)
-    .then((response) => response.json())
-    .then((data) => {
-        console.log("response",data);
-        console.log(id)
+    fetch(`http://localhost:5000/place/${placeId}`)
+      .then((response) => response.json())
+      .then((data) => {
         setPlaceInfo(data);
+        if (data && data.images) {
+          setImages(data.images);
+        }
       })
       .catch((error) => {
         console.error(error);
@@ -81,62 +84,52 @@ const PlaceInfo = () => {
       parent.find("li.next-img").attr("class", "active-img");
     }
   }, []);
-
+ const handleRatingChange = (value) => {
+   setRating(value);
+   // You can perform any additional logic here, such as updating the rating on the server
+ };
   return (
-    <div id="slider-wrapper">
-      <div id="image-slider">
-        <ul>
-          <li className="active-img">
-            <img src={placeInfo.mainImage}></img>
-          </li>
-        </ul>
-      </div>
+    <div className="info-container">
+      <div className="info-wrapper">
+        <div id="slider-wrapper">
+          <div id="image-slider">
+            <ul>
+              <li className="active-img">
+                <img src={placeInfo.mainImage} alt="" />
+              </li>
+            </ul>
+          </div>
 
-      <div id="thumbnail">
-        <ul>
-          <li className="active">
-            <img
-              src="https://40.media.tumblr.com/tumblr_m92vwz7XLZ1qf4jqio1_540.jpg"
-              alt=""
-            />
-          </li>
-          <li>
-            <img
-              src="https://36.media.tumblr.com/0eb59d5c5bc5cde7737bb99d527247ca/tumblr_nxi8jzk8OS1rwfs76o1_540.jpg"
-              alt=""
-            />
-          </li>
-          <li>
-            <img
-              src="https://40.media.tumblr.com/d4e261711a84707195d8fb9b0a94dccb/tumblr_o05avp3WSh1rn52wlo1_540.jpg"
-              alt=""
-            />
-          </li>
-          <li>
-            <img
-              src="https://40.media.tumblr.com/817bd6a18d9ca6877c9d5a1b7d33c198/tumblr_mx1cizinbl1qljihqo1_540.jpg"
-              alt=""
-            />
-          </li>
-          <li>
-            <img
-              src="https://40.media.tumblr.com/6fbf40647afad248b55af46361aea7f9/tumblr_nvdl4xGcxB1r3zwc2o1_540.jpg"
-              alt=""
-            />
-          </li>
-          <li>
-            <img
-              src="https://41.media.tumblr.com/77a37a7053a8d4b7b11be6d0bfed1073/tumblr_n7eb66mNme1se0g8bo1_540.jpg"
-              alt=""
-            />
-          </li>
-          <li>
-            <img
-              src="https://40.media.tumblr.com/tumblr_mbupbf3nR31rfxi00o1_r1_540.jpg"
-              alt=""
-            />
-          </li>
-        </ul>
+          <div id="thumbnail">
+            <ul>
+              {images.map((image, index) => (
+                <li key={index} className={index === 0 ? "active" : ""}>
+                  <img src={image.url} alt="" />
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+        <div className="place-info">
+          <p> Name: {placeInfo.name}</p>
+          <p> Description: {placeInfo.description}</p>
+          <p> Price Range: {placeInfo.price}$</p>{" "}
+          <div className="rating">
+            <h3>Rate this place:</h3>
+            <div className="stars">
+              {[1, 2, 3, 4, 5].map((star) => (
+                <span
+                  key={star}
+                  className={star <= rating ? "active" : ""}
+                  onClick={() => handleRatingChange(star)}
+                >
+                  &#9733;
+                </span>
+              ))}
+            </div>
+            <p>Your rating: {rating}</p>
+          </div>
+        </div>
       </div>
     </div>
   );
