@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useLocation,useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import "./place.css";
 
 const PlacebyLocation = () => {
@@ -32,7 +32,7 @@ const PlacebyLocation = () => {
             src={each.mainImage}
             alt="Location"
             onClick={() =>
-              navigate("/place", { state: { each: location._id } })
+              navigate("/placeInfo", { state: { each: location._id } })
             }
           />
           <h1>{each.description}</h1>

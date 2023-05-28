@@ -1,61 +1,177 @@
-body{
-
-overflow-x:hidden;
+.main-footer {
+  position: relative;
+  background: #0d3762;
+  bottom: 0;
+  height: 25vh;
 }
 
-.footer{
-background:#0d3762;
-padding:30px 0px;
-font-family: 'Play', sans-serif;
-text-align:center;
-bottom: 0;
-width: 100%;
-height: 15vh;
+.footer-content {
+  position: relative;
+}
+.flex-footer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+.footer-content:before {
+  position: absolute;
+  content: '';
+  background: url("../../assets/lebanon\ outline.png    ");
+  width: 200px;
+  height: 25vh;
+  right: 5%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  animation-name: float-bob;
+  animation-duration: 30s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  -webkit-animation-name: float-bob;
+  -webkit-animation-duration: 30s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+  -moz-animation-name: float-bob;
+  -moz-animation-duration: 30s;
+  -moz-animation-iteration-count: infinite;
+  -moz-animation-timing-function: linear;
+  -ms-animation-name: float-bob;
+  -ms-animation-duration: 30s;
+  -ms-animation-iteration-count: infinite;
+  -ms-animation-timing-function: linear;
+  -o-animation-name: float-bob;
+  -o-animation-duration: 30s;
+  -o-animation-iteration-count: infinite;
+  -o-animation-timing-function: linear;
 }
 
-.footer .row{
-width:100%;
-margin:1% 0%;
-padding:0.6% 0%;
-color:gray;
-font-size:0.8em;
+.footer-content .logo-widget {
+  position: relative;
+  margin-top: -5px;
 }
 
-.footer .row a{
-text-decoration:none;
-color:gray;
-transition:0.5s;
+.footer-content .logo-widget .footer-social li {
+  position: relative;
+  display: inline-block;
+  margin-right: 9px;
 }
 
-.footer .row a:hover{
-color:#fff;
+.footer-content .logo-widget .footer-social li:last-child {
+  margin-right: 0px;
 }
 
-.footer .row ul{
-width:100%;
+.footer-content .logo-widget .footer-social li a {
+  position: relative;
+  display: inline-block;
+  width: 42px;
+  height: 42px;
+  line-height: 42px;
+  background: #2e3138;
+  color: #9ea0a9;
+  text-align: center;
+  border-radius: 50%;
 }
 
-.footer .row ul li{
-display:inline-block;
-margin:0px 30px;
+.footer-content .logo-widget .footer-social li a:hover {
+  color: #ffffff;
+  background: #59abae;
 }
 
-.footer .row a i{
-font-size:2em;
-margin:0% 1%;
+.footer-content .logo-widget .logo-box {
+  margin-bottom: 25px;
 }
 
-@media (max-width:720px){
-.footer{
-text-align:left;
-padding:5%;
+.footer-content .logo-widget .text p {
+  color: #9ea0a9;
+  margin-bottom: 32px;
 }
-.footer .row ul li{
-display:block;
-margin:10px 0px;
-text-align:left;
+
+.footer-content .footer-title {
+  position: relative;
+  font-size: 24px;
+  line-height: 35px;
+  font-family: 'Playfair Display', serif;
+  color: #ffffff;
+  font-weight: 700;
+  margin-bottom: 27px;
 }
-.footer .row a i{
-margin:0% 3%;
+
+.footer-content .service-widget .list li {
+  display: block;
+  margin-bottom: 12px;
 }
+
+.footer-content .service-widget .list li a {
+  position: relative;
+  display: inline-block;
+  color: #9ea0a9;
+}
+
+.footer-content .service-widget .list li a:hover {
+  color: #59abae;
+}
+
+.footer-content .contact-widget p {
+  color: #9ea0a9;
+  margin-bottom: 15px;
+}
+
+.footer-content .contact-widget {
+  margin-left: 90px;
+}
+
+.footer-content .contact-widget .footer-title {
+  margin-bottom: 29px;
+}
+
+/** footer-bottom **/
+
+.footer-bottom {
+  position: relative;
+  background: #13151a;
+  padding: 25px 0px 22px 0px;
+}
+
+.footer-bottom .copyright,
+.footer-bottom .copyright a,
+.footer-bottom .footer-nav li a {
+  position: relative;
+  color: #9ea0a9;
+}
+
+.footer-bottom .footer-nav li a:hover,
+.footer-bottom .footer-nav li a:focus {
+  color: #59abae;
+}
+
+.footer-bottom .footer-nav {
+  position: relative;
+  text-align: right;
+}
+
+.footer-bottom .footer-nav li {
+  position: relative;
+  display: inline-block;
+  margin-left: 29px;
+}
+
+.footer-bottom .footer-nav li:first-child {
+  margin-left: 0px;
+}
+
+.footer-bottom .footer-nav li:before {
+  position: absolute;
+  content: '';
+  background: #9ea0a9;
+  width: 1px;
+  height: 14px;
+  top: 7px;
+  left: -18px;
+}
+
+.footer-bottom .footer-nav li:first-child:before {
+  display: none;
+}
+
+.logo-box img {
+  max-width: 220px;
 }

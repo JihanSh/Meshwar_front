@@ -1,5 +1,4 @@
 import "./App.css";
-import { Footer } from "./components/footer/footer";
 import { Navbar } from "./components/headnav/navbar.jsx";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/home/home.jsx";
@@ -11,6 +10,7 @@ import Contact from "./pages/contact/contact";
 import PlacebyActivity from "./pages/Place/placebyActivity";
 import PlaceInfo from "./pages/Place/place";
 import LoginForm from "./pages/login/login";
+import Footer from "./components/footer/footer";
 function App() {
   return (
     <BrowserRouter>
