@@ -11,23 +11,30 @@ import PlacebyActivity from "./pages/Place/placebyActivity";
 import PlaceInfo from "./pages/Place/place";
 import LoginForm from "./pages/login/login";
 import Footer from "./components/footer/footer";
+import MeshwarLayout from "./pages/meshwarLayout";
+import { useState } from "react";
 function App() {
+
   return (
+    
     <BrowserRouter>
       <div className="App">
-        <Navbar />
+        
+        
         <Routes>
-          <Route path="/" element={<Home />}></Route>
-          <Route path="/about" element={<About />}></Route>
-          <Route path="/activity" element={<Activity />}></Route>
-          <Route path="/places" element={<PlaceSelect />}></Route>
-          <Route path="/placebyactivity" element={<PlacebyActivity />}></Route>
-          <Route path="/location" element={<PlacebyLocation />}></Route>
-          <Route path="/contact" element={<Contact />}></Route>
-          <Route path="/login" element={<LoginForm />}></Route>
-          <Route path="/placeInfo" element={<PlaceInfo />}></Route>
+          <Route  element={<MeshwarLayout/>}>
+          <Route path="/" element={<Home />}/>
+          <Route path="/about" element={<About />}/>
+          <Route path="/activity" element={<Activity />}/>
+          <Route path="/places" element={<PlaceSelect />}/>
+          <Route path="/placebyactivity" element={<PlacebyActivity />}/>
+          <Route path="/location" element={<PlacebyLocation />}/>
+          <Route path="/contact" element={<Contact />}/>
+          <Route path="/login" element={<LoginForm />}/>
+          <Route path="/placeInfo" element={<PlaceInfo />}/>
+          </Route>
         </Routes>
-        <Footer />
+      
       </div>
     </BrowserRouter>
   );

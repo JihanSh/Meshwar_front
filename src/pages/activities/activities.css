@@ -1,13 +1,14 @@
 .imageGrid {
   line-height: 0;
   width: 80%;
-margin:50% auto;
-height:5dvh
+  margin: 20% auto;
+  display: flex;
+  gap: 2%;
 }
 
 .imageGrid .tile {
   width: 33.33%;
-  min-height: 20em;
+  min-height: 25em;
   line-height: 1.2;
   display: inline-block;
   background-size: cover;
@@ -20,6 +21,7 @@ height:5dvh
   text-shadow: 2px 2px 2px #0d3762a6;
   cursor: pointer;
   cursor: hand;
+  background-color: #0d3762a6;
 }
 
 .imageGrid .tile:before {
@@ -32,10 +34,6 @@ height:5dvh
   position: absolute;
 }
 
-.imageGrid .tile:hover:before {
-  display: none;
-}
-
 .imageGrid .tile .textWrapper {
   text-align: center;
   vertical-align: middle;
@@ -44,7 +42,7 @@ height:5dvh
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: 0.75em;
+  font-size: 20px;
 }
 
 .imageGrid .tile .textWrapper .content {
@@ -55,7 +53,10 @@ height:5dvh
   display: block;
   color: #ffffff;
 }
-
+.content{
+  font-size: 40px;
+  font-weight:normal;
+}
 .imageGrid .tile:hover .textWrapper .content h2 {
   margin: 0;
   color: #ffffff;
@@ -63,12 +64,17 @@ height:5dvh
 
 @media (max-width: 1000px) {
   .imageGrid .tile {
-    width: 50%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
   }
 }
 
 @media (max-width: 700px) {
-  .imageGrid .tile {
+  .imageGrid {
+    display: flex;
+    flex-direction: column;
     width: 100%;
+    gap: 2%;
   }
 }

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import RandomPlace from "../Place/randomPlace";
 const Activity = () => {
   const [activities, setActivities] = useState([]);
   const navigate = useNavigate();
@@ -17,21 +18,25 @@ const Activity = () => {
   }, []);
   
   return (
+    <>
     <div className="imageGrid">
       {activities.map((activity) => (
         <div
           key={activity._id}
           className="tile"
           style={{ backgroundImage: `url(${activity.mainImage})` }}
-          onClick={() => navigate("/placebyactivity", { state: { activity: activity._id } })}
+          onClick={() =>
+            navigate("/placebyactivity", { state: { activity: activity._id } })
+          }
         >
           <div className="textWrapper">
             <h2>{activity.title}</h2>
-            <div className="content">{activity.description}</div>
+            <div className="content">{activity.name}</div>
           </div>
         </div>
       ))}
     </div>
+      </>
   );
 };
 

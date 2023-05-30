@@ -11,13 +11,15 @@ const PlaceInfo = () => {
   const [rating, setRating] = useState(0);
   const place = useLocation();
   const placeId = place.state.each;
+  let imgId=place.state.img_id
+  
 
   useEffect(() => {
     handleImageClick();
   }, [placeId]);
 
   const handleImageClick = () => {
-    fetch(`http://localhost:5000/place/${placeId}`)
+    fetch(`http://localhost:5000/place/${placeId||imgId}`)
       .then((response) => response.json())
       .then((data) => {
         setPlaceInfo(data);
@@ -115,8 +117,8 @@ const PlaceInfo = () => {
           <p> Description: {placeInfo.description}</p>
           <p> Price Range: {placeInfo.price}$</p>{" "}
           <div className="rating">
-            <h3>Rate this place:</h3>
-            <div className="stars">
+            <p>Rate this place:</p>
+            <p className="stars">
               {[1, 2, 3, 4, 5].map((star) => (
                 <span
                   key={star}
@@ -126,8 +128,8 @@ const PlaceInfo = () => {
                   &#9733;
                 </span>
               ))}
-            </div>
-            <p>Your rating: {rating}</p>
+            </p>
+           
           </div>
         </div>
       </div>

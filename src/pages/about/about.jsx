@@ -2,8 +2,11 @@ import React, { useState, useEffect } from "react";
 import "./about.css";
 import lol from "../../assets/beirut.jpg";
 import lol2 from "../../assets/lebanon1.jpg";
+import { ThreeDots } from "react-loader-spinner";
 
 const About = () => {
+
+  
   return (
     <>
       <div className="about-wrap">

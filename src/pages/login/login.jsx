@@ -3,30 +3,32 @@ import "./login.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-
 function LoginForm() {
-
   const [zih, setZih] = useState(false);
-
-  function activateZih() {
-    setZih(true);
-  }
-
-  function deactivateZih() {
-    setZih(false);
-  }
-  let navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [address, setAddress] = useState("");
   const [phonenumber, setPhoneNumber] = useState("");
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
+
+  const activateZih = () => {
+    setZih(true);
+  };
+
+  const deactivateZih = () => {
+    setZih(false);
+  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     setError(null);
 
     try {
+      if (!username || !password || !address || !phonenumber) {
+        throw new Error("Please fill in all the required fields.");
+      }
+
       const response = await fetch("http://localhost:5000/user/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -51,7 +53,7 @@ function LoginForm() {
     }
   };
 
-  //   login
+  // login
   const handleLogin = async (event) => {
     event.preventDefault();
     setError(null);
@@ -82,30 +84,20 @@ function LoginForm() {
   return (
     <>
       <div className="J-popup-wrapper">
-        <div className="svg-head">
-
-          <div
-            className={zih ? "svg-wrapper-1 svg-wrapper-12" : "svg-wrapper-1"}
-          >
-            <svg height="300" width="400">
-              <polygon
-                points="160,10 360,120 160,220"
-                stroke="#0b496aa3"
-                fill="#0b496aa3"
-                strokeWidth="1"
-              />
-            </svg>
-          </div>
-        </div>
+        <div className="svg-head"></div>
         <div className="all-wrapper">
           <div className="all-wrapper-child">
             <div className="ask-login jiji">
               <h1>Have an account?</h1>
-              <button className="jij" onClick={deactivateZih}>Login</button>
+              <button className="jij" onClick={deactivateZih}>
+                Login
+              </button>
             </div>
             <div className="ask-signup jiji">
               <h1>Don't have an account?</h1>
-              <button className="jij" onClick={activateZih}>Register</button>
+              <button className="jij" onClick={activateZih}>
+                Register
+              </button>
             </div>
           </div>
           <div className="main-f-wrapper">
@@ -142,7 +134,7 @@ function LoginForm() {
                   </div>
                   <div className="login-button">
                     {error && (
-                      <p className="error-message"> Invalid Credentials</p>
+                      <p className="error-message">Invalid Credentials</p>
                     )}
                     <button type="submit">Log In</button>
                   </div>
@@ -200,7 +192,7 @@ function LoginForm() {
                       onChange={(e) => setPhoneNumber(e.target.value)}
                     />
                   </div>
-                  {error && <p className="error-message"> {error}</p>}
+                  {error && <p className="error-message">{error}</p>}
                   <button className="submit-button" type="submit">
                     Register
                   </button>
@@ -210,7 +202,6 @@ function LoginForm() {
           </div>
         </div>
       </div>
-
     </>
   );
 }

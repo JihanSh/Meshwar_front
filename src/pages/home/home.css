@@ -22,8 +22,9 @@
   position: relative;
   font-weight: 1000;
   font-size: 17px;
-  -webkit-box-shadow: 1px 4px 19px -1px #0d3762a4;
-  box-shadow: 1px 1px 19px -2px #155a9e80;
+  cursor: pointer;
+  -webkit-box-shadow: 1px 4px 10px #0d3762a4;
+  /* box-shadow: 1px 1px 19px -2px #155a9e80; */
   transition: all 250ms;
   overflow: hidden;
 }
@@ -35,7 +36,7 @@
   top: 100%;
   gap: 30px;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -100%);
 }
 .locationSelect {
   border-radius: 20px;
@@ -58,8 +59,9 @@
   background-color: #0d3762;
   height: 75px;
   border-radius: 30px;
-  padding: 10px;
+  padding: 10px 15px;
 }
+
 .loc-wrapper {
   display: grid;
   grid-row: 2;
@@ -70,7 +72,7 @@
   background-color: #0d3762;
   height: 75px;
   border-radius: 30px;
-  padding: 10px;
+  padding: 10px 15px;
 }
 .loc-wrapper label {
   color: white;
@@ -131,11 +133,12 @@
   position: relative;
   font-weight: 1000;
   font-size: 17px;
-  -webkit-box-shadow: 1px 4px 19px -1px #0d3762a4;
-  box-shadow: 1px 1px 19px -2px #155a9e80;
   transition: all 250ms;
+  -webkit-box-shadow: 1px 4px 10px #0d3762a4;
+
   overflow: hidden;
   margin-top: 2%;
+  cursor: pointer;
 }
 
 .about-button::before {
@@ -348,6 +351,20 @@
 @media (max-width: 480px) {
   .activity-select {
     width: 100%;
+    overflow: hidden;
+  }
+  .for-absolue {
+    width: 100%;
+    position: relative;
+    height: 75vh;
+  }
+  .feedback-images {
+    width: 100%;
+    height: 30vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
   }
   .about-text {
     text-align: center;
@@ -425,9 +442,12 @@
     position: absolute;
     border-bottom: 5px solid #0d3762;
   }
+  .feedback-images {
+    margin-top: 5%;
+  }
 
   .feed-image {
-    height: 150px;
+    height: 100px;
     width: 100%;
   }
 }

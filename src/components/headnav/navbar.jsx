@@ -6,6 +6,16 @@ import "./header-navbar.css";
 
 export const Navbar = () => {
   const location = useLocation();
+  const isHomePage = location.pathname === "/";
+
+  const handleLogout = () => {
+    console.log("Logout");
+    sessionStorage.clear("token");
+    window.location.href = "/";
+  };
+
+  const authenticated = sessionStorage.getItem("token");
+
   const handleHamburgerClick = () => {
     const navLinks = document.querySelector(".nav-links");
     const links = document.querySelectorAll(".nav-links li");
@@ -20,8 +30,6 @@ export const Navbar = () => {
     // Hamburger Animation
     hamburger.classList.toggle("toggle");
   };
-
-  const isHomePage = location.pathname === "/";
 
   return (
     <nav>
@@ -81,15 +89,27 @@ export const Navbar = () => {
             </Link>
           </li>
           <li>
-            <Link
-              to="/login"
-              style={{
-                textDecoration: "none",
-                color: isHomePage ? "#ffffff" : "#0d3762",
-              }}
-            >
-              <p>Login</p>
-            </Link>
+            {authenticated ? (
+              <li
+                style={{
+                  textDecoration: "none",
+                  color: isHomePage ? "#ffffff" : "#0d3762",
+                }}
+                onClick={handleLogout}
+              >
+                Logout
+              </li>
+            ) : (
+              <Link
+                to="/login"
+                style={{
+                  textDecoration: "none",
+                  color: isHomePage ? "#ffffff" : "#0d3762",
+                }}
+              >
+                <p>Login</p>
+              </Link>
+            )}
           </li>
         </ul>
       </div>

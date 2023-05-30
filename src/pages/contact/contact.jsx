@@ -2,6 +2,7 @@ import React,{useState} from 'react'
 import "./contact.css"
 import "../../components/headnav/header-navbar.css"
 import { Navbar } from '../../components/headnav/navbar'
+import MAP from "../../assets/MAP.png"
 
 const Contact = () => {
   const [name, setName] = useState("");
@@ -68,87 +69,78 @@ const Contact = () => {
     }
   };
   return (
-    <div className='contact-wrapper'>
-      
-        <div className="jumbotron"></div>
-        <div className="jumbotron-text">
-          <h1>Travel with us.</h1>
-          <p className="lead">
-            <strong>&nbsp; Be part of our amazing team this summer.</strong>
-          </p>
-          <hr />
-          <p className="lead main-jumbotron-text">
-            If you are a travel consultant committed to providing exceptional
-            customer service, come join our team in Lebanon.
-          </p>
-
-          <div className="contact-container">
-            <div className="row">
-              <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
-                <h2 className="form-title">Get in Touch</h2>
-              </div>
-            </div>
-            <form id="contact-form" className="form" onSubmit={validateForm}>
-              {/* Form fields */}
-              <div className="form-group">
-                <label htmlFor="name">Name</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="name"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                />
-                {nameError && <div className="error">{nameError}</div>}
-              </div>
-
-              <div className="form-group">
-                <label htmlFor="email">Email</label>
-                <input
-                  type="email"
-                  className="form-control"
-                  id="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-                {emailError && <div className="error">{emailError}</div>}
-              </div>
-
-              <div className="form-group">
-                <label htmlFor="subject">Subject</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="subject"
-                  value={subject}
-                  onChange={(e) => setSubject(e.target.value)}
-                />
-                {subjectError && <div className="error">{subjectError}</div>}
-              </div>
-
-              <div className="form-group">
-                <label htmlFor="message">Message</label>
-                <textarea
-                  rows="6"
-                  cols="60"
-                  className="form-control"
-                  id="message"
-                  value={message}
-                  onChange={(e) => setMessage(e.target.value)}
-                ></textarea>
-                {messageError && <div className="error">{messageError}</div>}
-              </div>
-
-              <div className="text-center margin-top-25">
-                <button
-                  type="submit"
-                  className="send-btn"
-                >
-                  Send Message
-                </button>
-              </div>
-            </form>{" "}
+    <div className="contact-wrapper">
+      <div className="contact-container">
+        <h1 className="h1-contact">Join us.</h1>
+        <p className="p-contact">
+          <strong> Be part of our amazing team </strong>
+        </p>
+        <p className="p-contact">
+          If you are a travel consultant committed to providing exceptional
+          customer service, come join our team in Lebanon.
+        </p>
+        <br />
+        <br />
+        <h1 className="h1-contact">Get in Touch</h1>
+        <form className="contact-form" onSubmit={validateForm}>
+          <div className="form-group">
+            <label htmlFor="name">Name</label>
+            <input
+              type="text"
+              className="form-control"
+              id="name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+            {nameError && <div className="error">{nameError}</div>}
           </div>
+
+          <div className="form-group">
+            <label htmlFor="email">Email</label>
+            <input
+              type="email"
+              className="form-control"
+              id="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            {emailError && <div className="error">{emailError}</div>}
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="subject">Subject</label>
+            <input
+              type="text"
+              className="form-control"
+              id="subject"
+              value={subject}
+              onChange={(e) => setSubject(e.target.value)}
+            />
+            {subjectError && <div className="error">{subjectError}</div>}
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="message">Message</label>
+            <textarea
+              rows="6"
+              cols="60"
+              className="form-control"
+              id="message"
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+            ></textarea>
+            {messageError && <div className="error">{messageError}</div>}
+          </div>
+
+          <div className="text-center margin-top-25">
+            <button type="submit" className="send-btn">
+              Send Message
+            </button>
+          </div>
+        </form>{" "}
+      </div>{" "}
+      <div>
+        <img className="jumbotron" src={MAP}></img>
       </div>
     </div>
   );

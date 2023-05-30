@@ -27,14 +27,14 @@ const PlacebyLocation = () => {
     <div className="grid-container">
       {location.map((each) => (
         <div className="places-wrapper" key={each._id}>
-          <h1>{each.name}</h1>
           <img
             src={each.mainImage}
             alt="Location"
             onClick={() =>
               navigate("/placeInfo", { state: { each: each._id } })
             }
-          />
+            />
+            <h1>{each.name}</h1>
           <h1>{each.description}</h1>
         </div>
       ))}

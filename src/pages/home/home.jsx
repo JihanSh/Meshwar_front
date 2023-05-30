@@ -1,17 +1,19 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import lol from "../../assets/jbeil.jpg";
-// import { Rating } from "react-simple-star-rating";
-import "./home.css";
-import "../activities/activities.css";
-import lebanon from "../../assets/lebanon.mp4";
 import { Link, useNavigate } from "react-router-dom";
-import { Header } from "../../components/headnav/header";
 import Swiper from "swiper";
-import "swiper/swiper-bundle.min.css";
 import Slider from "react-slick";
+import "swiper/swiper-bundle.min.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import Loader from "../../components/loader/Loader";
+import { Header } from "../../components/headnav/header";
+import "./home.css";
+import "../activities/activities.css";
+import lol from "../../assets/jbeil.jpg";
+import lebanon from "../../assets/lebanon.mp4";
+import RandomPlace from "../Place/randomPlace";
+
 
 const Home = () => {
   const [feedbacks, setFeedbacks] = useState([]);
@@ -24,42 +26,49 @@ const Home = () => {
   const [selectedLocation, setSelectedLocation] = useState("");
   const [filteredPlaces, setFilteredPlaces] = useState([]);
 
-  
   const navigate = useNavigate();
+
   useEffect(() => {
-    const fetchFeedbacks = async () => {
-      try {
-axios
-  .get("http://localhost:5000/location")
-  .then((response) => {
-    setLocations(response.data);
-  })
-  .catch((error) => {
-    console.error(error);
-  });
-        const response = await axios.get("http://localhost:5000/feedback");
-        setFeedbacks(response.data);
-        setLoading(false);
-      } catch (error) {
-        setError("Failed to fetch feedbacks. Please try again.");
-        setLoading(false);
-      }
+const fetchFeedbacks = async () => {
+  try {
+    const response = await axios.get("http://localhost:5000/feedback");
+    const feedbackData = response.data.map((feedback) => ({
+      ...feedback,
+      username: feedback.user_id.username,
+    }));
+    setFeedbacks(feedbackData);
+    setLoading(false);
+  } catch (error) {
+    setError("Failed to fetch feedbacks. Please try again.");
+    setLoading(false);
+  }
+};
+
+
+    const fetchActivities = () => {
+      fetch("http://localhost:5000/activity")
+        .then((response) => response.json())
+        .then((data) => setActivities(data));
     };
-    // Fetch activities
-    fetch("http://localhost:5000/activity")
-      .then((response) => response.json())
-      .then((data) => setActivities(data));
 
-    // Fetch locations
+    const fetchLocations = () => {
+      axios
+        .get("http://localhost:5000/location")
+        .then((response) => {
+          setLocations(response.data);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    };
+
+    fetchActivities();
+    fetchLocations();
     fetchFeedbacks();
-
-    
-    {console.log(setLocations)}
   }, []);
 
   useEffect(() => {
     const swiper = new Swiper(".swiper-slider", {
-      // Optional parameters
       centeredSlides: true,
       slidesPerView: 2,
       grabCursor: true,
@@ -69,27 +78,19 @@ axios
       keyboard: {
         enabled: true,
       },
-
-      // Enabled autoplay mode
       autoplay: {
         delay: 3000,
         disableOnInteraction: false,
       },
-
-      // If we need pagination
       pagination: {
         el: ".swiper-pagination",
         dynamicBullets: false,
         clickable: true,
       },
-
-      // If we need navigation
       navigation: {
         nextEl: ".swiper-button-next",
         prevEl: ".swiper-button-prev",
       },
-
-      // Responsive breakpoints
       breakpoints: {
         640: {
           slidesPerView: 1.25,
@@ -97,40 +98,28 @@ axios
         },
         1024: {
           slidesPerView: 3,
-          // spaceBetween: 20,
         },
       },
     });
+
     const slideInterval = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % feedbacks.length);
-    }, 5000); // Change slide interval as needed (in milliseconds)
+    }, 5000);
 
     return () => {
       clearInterval(slideInterval);
     };
   }, [feedbacks]);
 
-  if (loading) {
-    return <p>Loading feedbacks...</p>;
-  }
-
-  if (error) {
-    return <p>{error}</p>;
-  }
-
-  // Handle activity select change
   const handleActivityChange = (event) => {
     setSelectedActivity(event.target.value);
   };
 
-  // Handle location select change
   const handleLocationChange = (event) => {
     setSelectedLocation(event.target.value);
   };
+
   const handleGoClick = () => {
-    // Trigger filtering when the Go button is clicked
-    console.log("selectedActivity && selectedLocation");
-    console.log(selectedActivity && selectedLocation);
     if (selectedActivity && selectedLocation) {
       fetch(
         `http://localhost:5000/place/list/${selectedActivity}/${selectedLocation}`
@@ -138,27 +127,28 @@ axios
         .then((response) => response.json())
         .then((data) => setFilteredPlaces(data));
     }
-
   };
 
   const submitChange = (event) => {
     setSelectedLocation(event.target.value);
   };
+
   const sliderSettings = {
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 3, // Adjust the number of slides to show at a time
+    slidesToShow: 3,
     slidesToScroll: 1,
     responsive: [
       {
-        breakpoint: 768, // Adjust the breakpoint as needed
+        breakpoint: 768,
         settings: {
-          slidesToShow: 1, // Adjust the number of slides to show at a time on smaller screens
+          slidesToShow: 1,
         },
       },
     ],
   };
+
   return (
     <>
       <Header />
@@ -226,15 +216,8 @@ axios
       <div className="about-container">
         <div className="about-text">
           <div className="about-title">
-            {" "}
             <h1 className="title-abouthome">You're</h1>
-            <h2 className="not">
-              Not
-              <link
-                rel="stylesheet"
-                href="https://fonts.googleapis.com/css?family=Yellowtail"
-              />
-            </h2>
+            <h2 className="not">Not</h2>
             <h1 className="title-abouthome">Dreaming</h1>
           </div>
           <p>
@@ -259,6 +242,7 @@ axios
           <video src={lebanon} autoPlay muted loop></video>
         </div>
       </div>
+        <RandomPlace />
       <div className="slider-container">
         <h1 className="feedback-title">Which City You'd Like to Visit?</h1>
 
@@ -290,19 +274,34 @@ axios
               <p>No feedbacks available.</p>
             ) : (
               <div className="feedback-images">
-                {feedbacks[currentIndex].images.map((image) => (
-                  <img
-                    key={image._id}
-                    src={image.url}
-                    alt="Feedback Image"
-                    className="feed-image"
-                  />
-                ))}
+                {feedbacks[currentIndex % feedbacks.length].images.map(
+                  (image) => (
+                    <img
+                      key={image._id}
+                      src={image.url}
+                      alt="Feedback Image"
+                      className="feed-image"
+                    />
+                  )
+                )}
               </div>
             )}
             <div className="desc_wrapper">
-              <p>{feedbacks[currentIndex].description}</p>
-              <p>-{feedbacks[currentIndex].user_id.username}</p>
+              {feedbacks.length === 0 ? (
+                <p>No feedbacks available.</p>
+              ) : (
+                <div>
+                  <p>
+                    {feedbacks[currentIndex % feedbacks.length].description}
+                  </p>
+                  <p>
+                    {
+                      feedbacks[currentIndex % feedbacks.length].user_id
+                        .username
+                    }
+                  </p>
+                </div>
+              )}
             </div>
           </div>
         </div>
