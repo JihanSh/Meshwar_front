@@ -19,6 +19,7 @@ const Home = () => {
   const [feedbacks, setFeedbacks] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [loading, setLoading] = useState(true);
+  const [isloading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   const [activities, setActivities] = useState([]);
   const [locations, setLocations] = useState([]);
@@ -137,7 +138,7 @@ const fetchFeedbacks = async () => {
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 3,
+    slidesToShow: 4,
     slidesToScroll: 1,
     responsive: [
       {
@@ -148,7 +149,14 @@ const fetchFeedbacks = async () => {
       },
     ],
   };
-
+  useEffect(()=>{
+setTimeout(()=>{
+setIsLoading(false);
+},1000)
+  },[])
+if (isloading){
+  return <Loader/>
+}
   return (
     <>
       <Header />
@@ -217,7 +225,14 @@ const fetchFeedbacks = async () => {
         <div className="about-text">
           <div className="about-title">
             <h1 className="title-abouthome">You're</h1>
-            <h2 className="not">Not</h2>
+            <h2 className="not">
+              Not
+              <link
+                rel="stylesheet"
+                href="https://fonts.googleapis.com/css?family=Yellowtail"
+              />
+              
+            </h2>
             <h1 className="title-abouthome">Dreaming</h1>
           </div>
           <p>
@@ -234,18 +249,17 @@ const fetchFeedbacks = async () => {
             adventure, Lebanon is sure to captivate and inspire you. Come
             discover this unique and enchanting country for yourself!
           </p>
-          <button className="about-button">
-            <Link to="/about"></Link>Explore
-          </button>
+          <Link to="/about">
+            <button className="about-button">Explore</button>
+          </Link>
         </div>
         <div className="about-video">
           <video src={lebanon} autoPlay muted loop></video>
         </div>
       </div>
-        <RandomPlace />
+      <RandomPlace />
       <div className="slider-container">
         <h1 className="feedback-title">Which City You'd Like to Visit?</h1>
-
         <Slider {...sliderSettings}>
           {locations.map((location) => (
             <div className="location-card" key={location._id}>
@@ -255,6 +269,24 @@ const fetchFeedbacks = async () => {
                 alt={location.name}
                 onClick={() =>
                   navigate("/location", { state: { location: location._id } })
+                }
+              />
+            </div>
+          ))}
+        </Slider>
+        <h1 className="feedback-title">What do you prefer to do?</h1>
+
+        <Slider {...sliderSettings}>
+          {activities.map((activity) => (
+            <div className="location-card" key={activity._id}>
+              <h3>{activity.name}</h3>
+              <img
+                src={activity.mainImage}
+                alt={activity.name}
+                onClick={() =>
+                  navigate("/placebyactivity", {
+                    state: { activity: activity._id },
+                  })
                 }
               />
             </div>

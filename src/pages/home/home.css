@@ -106,7 +106,7 @@
   color: #0d3762;
 }
 .about-text .not {
-  line-height: 0;
+  line-height: 0.2;
   font-size: 50px;
   font-family: "Yellowtail", cursive;
   margin-left: -0.5rem;
@@ -275,6 +275,7 @@
   margin: 0 5%;
 }
 .feedback-title {
+  margin-top: 5%;
   color: #0d3762;
   text-align: start;
   font-size: 40px;
@@ -337,16 +338,20 @@
   bottom: 5px;
   border-bottom: 10px solid #0d3762;
 }
+.slider-container h3{
+  margin-top: 5%;
+  font-size: 30px;
+  font-weight: normal;
+}
 .slider-container {
-  margin-left: auto;
-  margin-right: auto;
+margin: auto;
   width: 90%;
   margin-bottom: 5%;
 }
 .location-card img {
-  width: 95%;
-  height: 400px; /* Adjust the desired height */
-  object-fit: cover; /* Ensure the image maintains its aspect ratio and fills the available space */
+  width:380px;
+  height:280px; 
+  padding: 20px 0;
 }
 @media (max-width: 480px) {
   .activity-select {

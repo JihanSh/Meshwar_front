@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useSpring, animated } from "react-spring";
-import "./place.css"
+import "./place.css";
 
 function RandomPlace() {
   const [randomPlace, setRandomPlace] = useState(null);
@@ -41,8 +41,9 @@ function RandomPlace() {
       <div className="random-container">
         <h1>Don't know where to go?</h1>
         <h2>Let Me Pick For You</h2>
-        <button className="random-button" onClick={handleRandomClick}>Let's Go</button>
-        
+        <button className="random-button" onClick={handleRandomClick}>
+          Let's Go
+        </button>
       </div>
     );
   }
@@ -50,11 +51,13 @@ function RandomPlace() {
   return (
     <div className="random-container">
       <animated.div style={fadeIn}>
-        <p>Name: {randomPlace.name}</p>
-        <img src={randomPlace.mainImage} alt="Place" />
-        <p>Activity: {randomPlace.activity.name}</p>
-        <p>Location: {randomPlace.location.name}</p>
-      <button className="random-button" onClick={handleRandomClick}>Pick Another</button>
+        <p>{randomPlace.name}</p>
+        <img className="random-image" src={randomPlace.mainImage} alt="Place" />
+        <p>{randomPlace.activity.name}</p>
+        <p>{randomPlace.location.name}</p>
+        <button className="random-button" onClick={handleRandomClick}>
+          Pick Another
+        </button>
       </animated.div>
     </div>
   );

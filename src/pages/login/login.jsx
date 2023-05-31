@@ -2,6 +2,7 @@ import React from "react";
 import "./login.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import MAP from "../../assets/MAP.png"
 
 function LoginForm() {
   const [zih, setZih] = useState(false);
@@ -82,7 +83,7 @@ function LoginForm() {
   };
 
   return (
-    <>
+    <div className="login">
       <div className="J-popup-wrapper">
         <div className="svg-head"></div>
         <div className="all-wrapper">
@@ -202,7 +203,10 @@ function LoginForm() {
           </div>
         </div>
       </div>
-    </>
+      <div className="map">
+        <img src={MAP}></img>
+      </div>
+    </div>
   );
 }
 

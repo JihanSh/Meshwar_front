@@ -12,6 +12,7 @@ const PlaceInfo = () => {
   const place = useLocation();
   const placeId = place.state.each;
   let imgId=place.state.img_id
+  let places = place.state.activity;
   
 
   useEffect(() => {
@@ -19,7 +20,7 @@ const PlaceInfo = () => {
   }, [placeId]);
 
   const handleImageClick = () => {
-    fetch(`http://localhost:5000/place/${placeId||imgId}`)
+    fetch(`http://localhost:5000/place/${placeId||imgId || places}`)
       .then((response) => response.json())
       .then((data) => {
         setPlaceInfo(data);
@@ -93,7 +94,7 @@ const PlaceInfo = () => {
   return (
     <div className="info-container">
       <div className="info-wrapper">
-        <div id="slider-wrapper">
+        <div className="slider-wrapper" id="slider-wrapper">
           <div id="image-slider">
             <ul>
               <li className="active-img">
@@ -113,11 +114,11 @@ const PlaceInfo = () => {
           </div>
         </div>
         <div className="place-info">
-          <p> Name: {placeInfo.name}</p>
-          <p> Description: {placeInfo.description}</p>
-          <p> Price Range: {placeInfo.price}$</p>{" "}
+         <h1> Name:</h1> <p>{placeInfo.name}</p>
+         <h1> Description:</h1> <p>{placeInfo.description}</p>
+         <h1> Price Range:</h1> <p>{placeInfo.price}$</p>{" "}
           <div className="rating">
-            <p>Rate this place:</p>
+           <h1>Rate this place:</h1>
             <p className="stars">
               {[1, 2, 3, 4, 5].map((star) => (
                 <span

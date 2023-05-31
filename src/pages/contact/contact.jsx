@@ -139,9 +139,7 @@ const Contact = () => {
           </div>
         </form>{" "}
       </div>{" "}
-      <div>
         <img className="jumbotron" src={MAP}></img>
-      </div>
     </div>
   );
 }
