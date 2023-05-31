@@ -2,7 +2,7 @@ import React from "react";
 import "./login.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import MAP from "../../assets/MAP.png"
+import MAP from "../../assets/MAP.png";
 
 function LoginForm() {
   const [zih, setZih] = useState(false);
@@ -30,11 +30,14 @@ function LoginForm() {
         throw new Error("Please fill in all the required fields.");
       }
 
-      const response = await fetch("http://localhost:5000/user/register", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ username, password, address, phonenumber }),
-      });
+      const response = await fetch(
+        "https://meshwar.onrender.com/user/register",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ username, password, address, phonenumber }),
+        }
+      );
 
       if (!response.ok) {
         const data = await response.json();
@@ -59,7 +62,7 @@ function LoginForm() {
     event.preventDefault();
     setError(null);
     try {
-      const response = await fetch("http://localhost:5000/user/login", {
+      const response = await fetch("https://meshwar.onrender.com/user/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username, password }),

@@ -14,7 +14,7 @@ function RandomPlace() {
 
   const fetchRandomPlace = async () => {
     try {
-      const response = await fetch("http://localhost:5000/place/random");
+      const response = await fetch("https://meshwar.onrender.com/place/random");
       const data = await response.json();
       if (response.ok) {
         setRandomPlace(data);

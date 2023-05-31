@@ -1,34 +1,40 @@
 .contact-wrapper {
-  height: 100vh;
-  display: flex;
-  flex-direction: row;
-  margin: auto 5%;
-  overflow: hidden;
+    height: 80vh;
+    display: flex;
+    flex-direction: row;
+    margin: 10% 5% 2% 10%;
+    overflow: hidden;
 }
-
 .jumbotron {
-  margin-top: 5%;
-  width: 900px;
-  height: 800px;
-  overflow: hidden;
+    /* margin-top: 5%; */
+    width: 796px;
+    height: 687px;
+    overflow: hidden;
 }
 
 .contact-container {
-  margin: 10% auto;
-  text-align: start;
-  display: block;
-  width: 70%;
+    border-radius: 35px;
+    /* margin: 10% auto; */
+    text-align: start;
+    display: block;
+    width: 40%;
+    height: 74vh;
+    padding: 1rem 4rem;
+    background-color: #59abae3d;
 }
 
 .h1-contact {
-  font-size: 40px;
+  font-size: 30px;
   font-weight: bold;
   line-height: 3.5rem;
 }
-
+.form-roup textarea{
+  height:5rem;
+}
 .p-contact {
-  font-size: 20px;
-  line-height: 2rem;
+    font-size: 20px;
+    line-height: 2rem;
+    max-width: 612px;
 }
 strong{
   color: #59abae;
@@ -64,7 +70,22 @@ form {
 }
 
 .form-control {
-  font-size: 20px;
+    border: none;
+    font-size: 20px;
+    padding-top: 10px;
+    /* width: 57%; */
+    background-color: transparent;
+    border-bottom: 0.5px solid #0000004d;
+}
+
+.form-control-1{
+      border: none;
+    font-size: 20px;
+    padding-top: 10px;
+    /* width: 57%; */
+    background-color: transparent;
+    border-bottom: 0.5px solid #0000004d;
+    height:3rem;
 }
 
 .error {

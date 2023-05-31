@@ -9,7 +9,7 @@ const PlacebyLocation = () => {
   const navigate = useNavigate();
 
   const handleImageClick = (locationId) => {
-    fetch(`http://localhost:5000/place/list/${locationId}`)
+    fetch(`https://meshwar.onrender.com/place/list/${locationId}`)
       .then((response) => response.json())
       .then((data) => {
         setLocation(data);
@@ -33,8 +33,8 @@ const PlacebyLocation = () => {
             onClick={() =>
               navigate("/placeInfo", { state: { each: each._id } })
             }
-            />
-            <h1>{each.name}</h1>
+          />
+          <h1>{each.name}</h1>
           <h1>{each.description}</h1>
         </div>
       ))}

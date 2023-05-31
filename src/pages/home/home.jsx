@@ -14,7 +14,6 @@ import lol from "../../assets/jbeil.jpg";
 import lebanon from "../../assets/lebanon.mp4";
 import RandomPlace from "../Place/randomPlace";
 
-
 const Home = () => {
   const [feedbacks, setFeedbacks] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -30,31 +29,32 @@ const Home = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-const fetchFeedbacks = async () => {
-  try {
-    const response = await axios.get("http://localhost:5000/feedback");
-    const feedbackData = response.data.map((feedback) => ({
-      ...feedback,
-      username: feedback.user_id.username,
-    }));
-    setFeedbacks(feedbackData);
-    setLoading(false);
-  } catch (error) {
-    setError("Failed to fetch feedbacks. Please try again.");
-    setLoading(false);
-  }
-};
-
+    const fetchFeedbacks = async () => {
+      try {
+        const response = await axios.get(
+          "https://meshwar.onrender.com/feedback"
+        );
+        const feedbackData = response.data.map((feedback) => ({
+          ...feedback,
+          username: feedback.user_id.username,
+        }));
+        setFeedbacks(feedbackData);
+        setLoading(false);
+      } catch (error) {
+        setError("Failed to fetch feedbacks. Please try again.");
+        setLoading(false);
+      }
+    };
 
     const fetchActivities = () => {
-      fetch("http://localhost:5000/activity")
+      fetch("https://meshwar.onrender.com/activity")
         .then((response) => response.json())
         .then((data) => setActivities(data));
     };
 
     const fetchLocations = () => {
       axios
-        .get("http://localhost:5000/location")
+        .get("https://meshwar.onrender.com/location")
         .then((response) => {
           setLocations(response.data);
         })
@@ -123,7 +123,7 @@ const fetchFeedbacks = async () => {
   const handleGoClick = () => {
     if (selectedActivity && selectedLocation) {
       fetch(
-        `http://localhost:5000/place/list/${selectedActivity}/${selectedLocation}`
+        `https://meshwar.onrender.com/place/list/${selectedActivity}/${selectedLocation}`
       )
         .then((response) => response.json())
         .then((data) => setFilteredPlaces(data));
@@ -149,14 +149,14 @@ const fetchFeedbacks = async () => {
       },
     ],
   };
-  useEffect(()=>{
-setTimeout(()=>{
-setIsLoading(false);
-},1000)
-  },[])
-if (isloading){
-  return <Loader/>
-}
+  useEffect(() => {
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 1000);
+  }, []);
+  if (isloading) {
+    return <Loader />;
+  }
   return (
     <>
       <Header />
@@ -231,7 +231,6 @@ if (isloading){
                 rel="stylesheet"
                 href="https://fonts.googleapis.com/css?family=Yellowtail"
               />
-              
             </h2>
             <h1 className="title-abouthome">Dreaming</h1>
           </div>

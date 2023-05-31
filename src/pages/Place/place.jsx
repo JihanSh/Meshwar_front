@@ -11,16 +11,15 @@ const PlaceInfo = () => {
   const [rating, setRating] = useState(0);
   const place = useLocation();
   const placeId = place.state.each;
-  let imgId=place.state.img_id
+  let imgId = place.state.img_id;
   let places = place.state.activity;
-  
 
   useEffect(() => {
     handleImageClick();
   }, [placeId]);
 
   const handleImageClick = () => {
-    fetch(`http://localhost:5000/place/${placeId||imgId || places}`)
+    fetch(`https://meshwar.onrender.com/place/${placeId || imgId || places}`)
       .then((response) => response.json())
       .then((data) => {
         setPlaceInfo(data);
@@ -87,10 +86,10 @@ const PlaceInfo = () => {
       parent.find("li.next-img").attr("class", "active-img");
     }
   }, []);
- const handleRatingChange = (value) => {
-   setRating(value);
-   // You can perform any additional logic here, such as updating the rating on the server
- };
+  const handleRatingChange = (value) => {
+    setRating(value);
+    // You can perform any additional logic here, such as updating the rating on the server
+  };
   return (
     <div className="info-container">
       <div className="info-wrapper">
@@ -114,11 +113,11 @@ const PlaceInfo = () => {
           </div>
         </div>
         <div className="place-info">
-         <h1> Name:</h1> <p>{placeInfo.name}</p>
-         <h1> Description:</h1> <p>{placeInfo.description}</p>
-         <h1> Price Range:</h1> <p>{placeInfo.price}$</p>{" "}
+          <h1> Name:</h1> <p>{placeInfo.name}</p>
+          <h1> Description:</h1> <p>{placeInfo.description}</p>
+          <h1> Price Range:</h1> <p>{placeInfo.price}$</p>{" "}
           <div className="rating">
-           <h1>Rate this place:</h1>
+            <h1>Rate this place:</h1>
             <p className="stars">
               {[1, 2, 3, 4, 5].map((star) => (
                 <span
@@ -130,7 +129,6 @@ const PlaceInfo = () => {
                 </span>
               ))}
             </p>
-           
           </div>
         </div>
       </div>
