@@ -8,7 +8,7 @@ const About = () => {
 
   
   return (
-    <>
+    <div className="about-container">
       <div className="about-wrap">
         <div className="about-wrap-image">
           <img src={lol} alt="Feedback Image" />
@@ -53,7 +53,7 @@ const About = () => {
           <img src={lol2} alt="Feedback Image" />
         </div>
       </div>
-    </>
+    </div>
   );
 };
 export default About;

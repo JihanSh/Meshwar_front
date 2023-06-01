@@ -158,7 +158,7 @@ const Home = () => {
     return <Loader />;
   }
   return (
-    <>
+    <div className="home-container">
       <Header />
       <div className="activity-select">
         <div className="activ-wrapper">
@@ -221,7 +221,7 @@ const Home = () => {
         <div className="swiper-button-next"></div>
       </div>
 
-      <div className="about-container">
+      <div className="about-home-container">
         <div className="about-text">
           <div className="about-title">
             <h1 className="title-abouthome">You're</h1>
@@ -337,7 +337,7 @@ const Home = () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

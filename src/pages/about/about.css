@@ -1,4 +1,9 @@
-
+.about-container {
+  display: flex;
+  overflow: hidden;
+  flex-direction: column;
+  height: max-content;
+}
 .about-wrap-text h1 {
   position: relative;
   display: flex;
@@ -6,7 +11,7 @@
   color: #0d3762;
   justify-content: start;
   margin-top: 20%;
-  font-size: 60px;
+  font-size: 40px;
   text-align: start;
 }
 .about-wrap-text p {
@@ -46,11 +51,12 @@
   height: 300px;
   bottom: -50px;
   left: 50%;
-}.about-wrap {
+}
+.about-wrap {
   margin-top: 5%;
-    height: 60vh;
+  height: 60vh;
   display: grid;
-  grid-template-columns:60% 50%;
+  grid-template-columns: 60% 50%;
   /* background-color: rgba(228, 228, 228, 0.736); */
   width: 90%;
 }
@@ -69,12 +75,12 @@
   line-height: 60px;
   color: #0d3762;
   justify-content: start;
-  font-size: 60px;
+  font-size: 40px;
   text-align: start;
 }
 .about2-wrap-text p {
   text-align: start;
-  font-size: 40px;
+  font-size: 30px;
   color: #0d3762;
 }
 .about2-wrap-text {
@@ -118,7 +124,7 @@
   font-size: 20px;
 }
 .about2-wrap-text h1 {
-  font-size: 50px;
+  font-size: 40px;
 }
 span {
   font-size: 20px;
@@ -153,25 +159,38 @@ span {
     bottom: -50px;
     left: 50%;
   }
-  .about2-wrap-text {
-    margin-left: 0%;
-  }
+  .about2-wrap-text p {
+  text-align: center;
+  font-size: 30px;
+  color: #0d3762;
+}
+  .about2-wrap-text h1 {
+margin: auto;  }
   .about-wrap-image {
     top: 0;
     margin-top: 5%;
   }
-  .about2-wrap-image {
+  /* .about2-wrap-image {
     top: 40px;
-    margin-top: 5%;
-  }
-  .about-wrap-text {
+    margin: auto 40px;
+  } */
+  .about-wrap-text h1, 
+  .about-wrap-text p{
     width: 100%;
-    }
+    text-align: center;
+  }
   .about-wrap {
+    gap: 5%;
     margin-top: 10vh;
-    height: 50vh;
+    height: 60vh;
     display: flex;
     width: 100%;
+  }
+  .about2-wrap {
+    /* margin-top: 10vh; */
+    height: 60vh;
+    display: flex;
+    width: 90%;
   }
   .about-wrap-image img:first-of-type {
     z-index: 1;
@@ -184,55 +203,69 @@ span {
   }
 }
 @media screen and (max-width: 768px) {
+  .about-container {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+  }
   .about-wrap {
     flex-direction: column;
-    height: auto;
     margin-bottom: 2%;
     width: 100%;
     justify-content: center;
   }
-  .about-wrap-image {
-    margin: 0;
-  }
+
   .about-wrap-text {
     text-align: center;
   }
-  .about-wrap-text h1 {
+    .about2-wrap-text {
+    text-align: center;
+  }
+  .about-wrap-text h1, 
+  .about2-wrap-text h1 {
     position: relative;
     display: flex;
     line-height: 60px;
     color: #0d3762;
-    justify-content: start;
-    font-size: 60px;
+    justify-content: center;
+    font-size: 50px;
     text-align: center;
   }
-  .about-wrap-text p {
+  .about-wrap-text p 
+  .about2-wrap-text p {
     text-align: center;
     font-size: 30px;
     color: #0d3762;
   }
   .about-wrap-image {
-    width: 400px;
+    /* width: 400px; */
     height: 400px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .about2-wrap {
+    /* width: 400px; */
+    height: auto;
     position: relative;
     display: flex;
     justify-content: center;
-    margin-top: auto;
-    margin-bottom: auto;
+    flex-direction: column;
+    overflow: hidden;
   }
 
-  .about-wrap-image img:first-of-type,
-  .about-wrap-image img:last-of-type {
-    position: relative;
-    top: initial;
-    left: initial;
-    transform: none;
-    margin: 0 auto;
-  }
   .about-wrap-image img:first-of-type {
     height: 300px;
     width: 200px;
-    transform: translate(-50%, -50%);
+    transform: translate(-55%, -50%);
+    top: 50%;
+    left: 50%;
+  }
+
+  .about2-wrap-image img:first-of-type {
+    height: 300px;
+    width: 200px;
+    transform: translate(-55%, -50%);
     top: 50%;
     left: 50%;
   }
@@ -240,12 +273,22 @@ span {
     height: 200px;
     width: 150px;
     transform: translate(-50%, -50%);
-    top: 75%;
+    top: 85%;
+    left: 60%;
+  }
+  .about2-wrap-image img:last-of-type {
+    height: 200px;
+    width: 150px;
+    transform: translate(50%, -50%);
+    top: 65%;
     left: 20%;
   }
 }
 
 @media screen and (max-width: 478px) {
+  .about-container {
+    overflow: hidden;
+  }
   .about2-wrap {
     grid-template-columns: 1fr;
     height: auto;
@@ -253,10 +296,6 @@ span {
     justify-content: center;
   }
 
-  .about2-wrap-text {
-    margin-left: 0;
-    text-align: center;
-  }
 
   .about2-wrap-image img:first-of-type,
   .about2-wrap-image img:last-of-type {
@@ -276,7 +315,7 @@ span {
   .about2-wrap-image img:last-of-type {
     height: 200px;
     width: 150px;
-    transform: translate(-75%, -50%);
+    transform: translate(-75%, -40%);
     top: 30%;
     left: 0%;
   }

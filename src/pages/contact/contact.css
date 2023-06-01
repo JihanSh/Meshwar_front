@@ -1,26 +1,26 @@
 .contact-wrapper {
-    height: 80vh;
-    display: flex;
-    flex-direction: row;
-    margin: 10% 5% 2% 10%;
-    overflow: hidden;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  margin: 10% 5% 2% 10%;
+  overflow: hidden;
 }
 .jumbotron {
-    /* margin-top: 5%; */
-    width: 796px;
-    height: 687px;
-    overflow: hidden;
+  /* margin-top: 5%; */
+  width: 796px;
+  height: 687px;
+  overflow: hidden;
 }
 
 .contact-container {
-    border-radius: 35px;
-    /* margin: 10% auto; */
-    text-align: start;
-    display: block;
-    width: 40%;
-    height: 74vh;
-    padding: 1rem 4rem;
-    background-color: #59abae3d;
+  border-radius: 35px;
+  /* margin: 10% auto; */
+  text-align: start;
+  display: block;
+  width: 40%;
+  height: auto;
+  padding: 1rem 4rem;
+  background-color: #59abae3d;
 }
 
 .h1-contact {
@@ -28,15 +28,15 @@
   font-weight: bold;
   line-height: 3.5rem;
 }
-.form-roup textarea{
-  height:5rem;
+.form-roup textarea {
+  height: 5rem;
 }
 .p-contact {
-    font-size: 20px;
-    line-height: 2rem;
-    max-width: 612px;
+  font-size: 20px;
+  line-height: 2rem;
+  max-width: 612px;
 }
-strong{
+strong {
   color: #59abae;
 }
 
@@ -70,22 +70,22 @@ form {
 }
 
 .form-control {
-    border: none;
-    font-size: 20px;
-    padding-top: 10px;
-    /* width: 57%; */
-    background-color: transparent;
-    border-bottom: 0.5px solid #0000004d;
+  border: none;
+  font-size: 20px;
+  padding-top: 10px;
+  /* width: 57%; */
+  background-color: transparent;
+  border-bottom: 0.5px solid #0000004d;
 }
 
-.form-control-1{
-      border: none;
-    font-size: 20px;
-    padding-top: 10px;
-    /* width: 57%; */
-    background-color: transparent;
-    border-bottom: 0.5px solid #0000004d;
-    height:3rem;
+.form-control-1 {
+  border: none;
+  font-size: 20px;
+  padding-top: 10px;
+  /* width: 57%; */
+  background-color: transparent;
+  border-bottom: 0.5px solid #0000004d;
+  height: 3rem;
 }
 
 .error {
@@ -135,17 +135,38 @@ form {
 
 /* Responsive styles */
 
+@media screen and (max-width: 1400px) {
+  .jumbotron {
+    /* margin-top: 5%; */
+    width: 504px;
+    height: 521px;
+    overflow: hidden;
+  }
+}
+
+@media screen and (max-width: 1048px) {
+  .jumbotron {
+    display: none;
+  }
+}
 @media screen and (max-width: 1024px) {
   .contact-container {
-    width: 100%;
-    transform: translate(10%, 30%);
+    /* width: 100%; */
+    /* transform: translate(10%, 30%); */
     margin: auto;
+  }
+  .contact-wrapper {
+    height: ;
+    display: flex;
+    flex-direction: row;
+    margin: 15% 5% 2% 10%;
+    overflow: hidden;
   }
 
   .form-group {
     width: 70%;
   }
-   .jumbotron {
+  .jumbotron {
     height: 400px;
     transform: translateY(320px);
   }
@@ -155,14 +176,13 @@ form {
   .contact-container {
     width: 100%;
     height: 100%;
-    transform: translate(5%, 10%);
+    /* transform: translate(5%, 10%); */
   }
 
   .jumbotron {
     width: 100%;
     height: 500px;
-        transform: translate(5%, 10%);
-
+    transform: translate(5%, 10%);
   }
 
   .form-group {
@@ -181,7 +201,7 @@ form {
 @media screen and (max-width: 576px) {
   .contact-container {
     transform: translate(0, 0);
-    width: 100%;
+    width: 60%;
   }
   .contact-wrapper {
     display: flex;
