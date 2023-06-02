@@ -4,9 +4,11 @@ import $ from "jquery";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./place.css";
+import MAP from "../../assets/MAP.png"
 
 const PlaceInfo = () => {
   const [placeInfo, setPlaceInfo] = useState({});
+  const [feedback, setFeedback] = useState([]);
   const [images, setImages] = useState([]);
   const [rating, setRating] = useState(0);
   const place = useLocation();
@@ -29,6 +31,17 @@ const PlaceInfo = () => {
       })
       .catch((error) => {
         console.error(error);
+      });
+    fetch(
+      `https://meshwar.onrender.com/place/show/${placeId || imgId || places}`
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        setFeedback(data);
+        console.log(data);
+        if (data && data.images) {
+          setImages(data.images);
+        }
       });
   };
 
@@ -93,6 +106,39 @@ const PlaceInfo = () => {
   return (
     <div className="info-container">
       <div className="info-wrapper">
+        <div className="place-info">
+          <h1> Name:</h1> <p>{placeInfo.name}</p>
+          <h1> Description:</h1> <p>{placeInfo.description}</p>
+          <h1> Price Range:</h1> <p>{placeInfo.price}$</p>{" "}
+          <div className="rating">
+            <h1>Rating:</h1>
+            <p className="stars">
+              {[1, 2, 3, 4, 5].map((star) => (
+                <span
+                  key={star}
+                  className={star <= rating ? "active" : ""}
+                  onClick={() => handleRatingChange(star)}
+                >
+                  &#9733;
+                </span>
+              ))}
+            </p>
+          </div>
+          <h1>Feedback</h1>
+          {feedback.map((feedbacks, index) => (
+            <div key={index}>
+              <p>{feedbacks.description}</p>
+              {feedbacks.images.map((image, imgIndex) => (
+                <img
+                className="feed-img"
+                  key={imgIndex}
+                  src={image.url}
+                  alt="Jamala wlo"
+                  />
+                  ))}
+            </div>
+          ))}
+        </div>
         <div className="slider-wrapper" id="slider-wrapper">
           <div id="image-slider">
             <ul>
@@ -110,25 +156,6 @@ const PlaceInfo = () => {
                 </li>
               ))}
             </ul>
-          </div>
-        </div>
-        <div className="place-info">
-          <h1> Name:</h1> <p>{placeInfo.name}</p>
-          <h1> Description:</h1> <p>{placeInfo.description}</p>
-          <h1> Price Range:</h1> <p>{placeInfo.price}$</p>{" "}
-          <div className="rating">
-            <h1>Rate this place:</h1>
-            <p className="stars">
-              {[1, 2, 3, 4, 5].map((star) => (
-                <span
-                  key={star}
-                  className={star <= rating ? "active" : ""}
-                  onClick={() => handleRatingChange(star)}
-                >
-                  &#9733;
-                </span>
-              ))}
-            </p>
           </div>
         </div>
       </div>
