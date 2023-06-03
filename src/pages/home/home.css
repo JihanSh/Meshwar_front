@@ -80,7 +80,7 @@
 .activ-wrapper label {
   color: white;
 }
-.about-home-container{
+.about-home-container {
   display: flex;
   margin: 5%;
 }
@@ -88,7 +88,7 @@
   position: relative;
   transform: rotate(-90deg);
   width: 1000px;
-height: 700px
+  height: 700px;
 }
 
 .about-text {
@@ -202,7 +202,7 @@ height: 700px
 }
 
 .carousel-img {
-  width: 70%;
+  width: 25%;
   height: 350px;
   cursor: pointer;
 }
@@ -340,23 +340,23 @@ height: 700px
   bottom: 5px;
   border-bottom: 10px solid #0d3762;
 }
-.slider-container h3{
+.slider-container h3 {
   margin-top: 5%;
   font-size: 30px;
   font-weight: normal;
 }
 .slider-container {
-margin: auto;
+  margin: auto;
   width: 90%;
   margin-bottom: 5%;
 }
 .location-card img {
-  width:380px;
-  height:280px; 
+  width: 380px;
+  height: 280px;
   padding: 20px 0;
 }
 @media (max-width: 480px) {
-  .about-home-container{
+  .about-home-container {
     display: flex;
     flex-direction: column;
   }
@@ -399,14 +399,14 @@ margin: auto;
   }
 }
 @media (max-width: 1150px) {
-.about-home-container{
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-}
-.about-text{
-  width: 100%;
-}
+  .about-home-container {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  .about-text {
+    width: 100%;
+  }
 }
 @media (max-width: 768px) {
   .about-container {
@@ -473,7 +473,7 @@ margin: auto;
   }
 }
 @media (max-width: 480px) {
-  .about-home-container{
+  .about-home-container {
     display: flex;
     flex-direction: column;
   }
@@ -516,14 +516,13 @@ margin: auto;
   }
 }
 @media (max-width: 768px) {
-  .home-container{
+  .home-container {
     display: flex;
     flex-direction: column;
     overflow: hidden;
   }
-  .slider-container{
-    width:100%;
-
+  .slider-container {
+    width: 100%;
   }
   .about-container {
     flex-direction: column;
@@ -532,7 +531,8 @@ margin: auto;
   .location-card img {
     width: 380px;
     height: 280px;
-margin: auto;}
+    margin: auto;
+  }
   .places-text {
     width: 100%;
     font-size: 20px;
@@ -541,8 +541,10 @@ margin: auto;}
   }
   .activity-select {
     width: 100%;
+        transform: translate(-50%, -110%);
+
   }
-  .about-home-container{
+  .about-home-container {
     overflow: hidden;
     display: flex;
     flex-direction: column;

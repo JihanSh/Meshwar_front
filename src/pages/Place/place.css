@@ -22,9 +22,6 @@
   background-color: #fff;
   transition: transform 0.3s ease-in-out;
   border-radius: 20px;
-  &:hover {
-    transform: translateY(-5px);
-  }
 }
 
 .places-wrapper h1 {
@@ -47,15 +44,16 @@
   font-size: 16px;
   line-height: 1.4;
 }
-/* html, body, main {
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  padding: 0;
-} */
-.info-container{
+
+.info-container {
   overflow: hidden;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  gap: 5%;
+  margin: 10% 0;
 }
+
 #carousel {
   position: relative;
   height: 600px;
@@ -156,9 +154,9 @@ ul {
 }
 
 #slider-wrapper {
-background-color: #59abae3d;
-    padding: 15px;
-    border-radius: 40px;
+  background-color: #59abae3d;
+  padding: 15px;
+  border-radius: 40px;
 }
 
 #image-slider {
@@ -169,11 +167,10 @@ background-color: #59abae3d;
   margin: auto;
   display: block;
 }
-
 #image-slider ul {
-  width: 700px;
-  height: 500px;
-  position: relative;
+    width: 850px;
+    height: 540px;
+    position: relative;
 }
 
 #image-slider ul li {
@@ -220,30 +217,21 @@ background-color: #59abae3d;
 }
 
 #thumbnail li img {
-  padding: 10px;
+  padding: 10px 0;
   float: left;
   margin: 0px 1.5px;
-  max-height: 56px;
-  height: 56px;
+  max-height: 99px;
+  height: 110px;
 }
 
 #thumbnail li:first-child img {
   margin-right: 0px;
   margin-left: 0px;
 }
-.info-wrapper {
-  display: flex;
-  gap: 5%;
-  flex-direction: row;
-  justify-content: center;  
-}
-.info-container {
-  height: 200vh;
-  margin-top: 20vh;
-}
-.place-info{
-    border-radius: 35px;
-  /* margin: 10% auto; */
+
+
+.place-info {
+  border-radius: 35px;
   text-align: start;
   display: block;
   width: 30%;
@@ -251,11 +239,14 @@ background-color: #59abae3d;
   padding: 1rem 4rem;
   background-color: #59abae3d;
 }
-.place-info p{
+
+.place-info p {
   text-align: start;
-  font-size: 20px;
+  font-size: 18px;
   padding: 2% 0;
+  font-weight: normal;
 }
+
 .place-info h1,
 .rating {
   text-align: start;
@@ -263,16 +254,32 @@ background-color: #59abae3d;
   font-size: 25px;
   color: #0d3762;
 }
+
+.feedback1-container {
+  text-align: start;
+  width: 100%;
+  margin-left: 0;
+}
+
+.feedback-scroll {
+  overflow-x: auto;
+  overflow-y: scroll;
+  height: 35vh;
+}
+
 .rating {
   display: flex;
   text-align: start;
 }
-.rating h1{
+
+.rating h1 {
   width: 300px;
 }
-.rating .stars{
+
+.rating .stars {
   vertical-align: top;
 }
+
 .random-button {
   padding: 15px 25px;
   border: unset;
@@ -292,6 +299,7 @@ background-color: #59abae3d;
   cursor: pointer;
   padding: 10px;
 }
+
 .random-button::before {
   content: "";
   position: absolute;
@@ -306,28 +314,103 @@ background-color: #59abae3d;
   box-shadow: 4px 8px 19px -3px #0d3762;
   transition: all 250ms;
 }
+
 .random-button:hover {
   color: #e8e8e8;
 }
 
-
 .random-button:hover::before {
   width: 100%;
 }
-.random-container{
+
+.random-container {
   margin-bottom: 2%;
 }
-.random-image{
+
+.random-image {
   width: 500px;
   height: 500px;
 }
 
-.random-container p{
+.random-container p {
   font-size: 20px;
   font-weight: bold;
-  
 }
-.feed-img{
+
+.feed-img {
   height: 100px;
   width: 100px;
+}
+
+
+@media screen and (max-width: 1150px) {
+  .info-container {
+    flex-direction: column;
+  }
+  .place-info{
+    width: 80%;
+    margin: 5% auto ;
+  }
+  #image-slider ul {
+    width: 100%;
+    height: 540px;
+    position: relative;
+}
+}
+
+@media screen and (max-width: 850px) {
+  .info-container {
+    flex-direction: column;
+  }
+  .place-info{
+    width: 80%;
+    margin: 5% auto ;
+  }
+  #slider-wrapper{
+    width: 90%;
+    margin: auto;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .grid-container {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+
+  .places-wrapper img {
+    height: 20vh;
+  }
+
+  .place-info {
+    width: 90%;
+    padding: 1rem;
+  }
+
+  .random-image {
+    width: 300px;
+    height: 300px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .grid-container {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+
+  .places-wrapper img {
+    height: 15vh;
+  }
+
+  .place-info {
+    width: 90%;
+    padding: 1rem;
+  }
+  #slider-wrapper{
+    width: 90%;
+    margin: auto;
+  }
+  .random-image {
+    width: 200px;
+    height: 200px;
+  }
 }

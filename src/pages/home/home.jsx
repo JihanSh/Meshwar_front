@@ -10,7 +10,6 @@ import Loader from "../../components/loader/Loader";
 import { Header } from "../../components/headnav/header";
 import "./home.css";
 import "../activities/activities.css";
-import lol from "../../assets/jbeil.jpg";
 import lebanon from "../../assets/lebanon.mp4";
 import RandomPlace from "../Place/randomPlace";
 
@@ -152,7 +151,7 @@ const Home = () => {
   useEffect(() => {
     setTimeout(() => {
       setIsLoading(false);
-    }, 1000);
+    }, 3000);
   }, []);
   if (isloading) {
     return <Loader />;

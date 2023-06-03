@@ -1,3 +1,5 @@
+/* Default styles */
+
 .J-popup-wrapper {
   display: flex;
   justify-content: center;
@@ -5,8 +7,8 @@
   overflow: hidden;
   height: 100vh;
   width: 100%;
-
 }
+
 .label-login {
   color: white;
 }
@@ -21,7 +23,6 @@
   justify-content: center;
   align-items: center;
   z-index: 1;
-
 }
 
 .all-wrapper-child {
@@ -44,9 +45,8 @@
   gap: 5px;
   font-size: 15px;
   color: white !important;
-  margin-left: 20 px;
+  margin-left: 20px;
 }
-
 
 .main-f-wrapper {
   height: 100%;
@@ -92,6 +92,7 @@
   transition: 0.7s all cubic-bezier(0.68, -0.55, 0.265, 1.55);
   transform: translate(-50%);
 }
+
 .left-right-wrapper form {
   flex-shrink: 0;
   display: flex;
@@ -127,6 +128,7 @@
   overflow: hidden;
   margin-top: 2%;
 }
+
 .jij {
   padding: 15px 25px;
   border: unset;
@@ -144,20 +146,8 @@
   overflow: hidden;
   margin-top: 2%;
 }
-.left-right-wrapper form button::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 0;
-  border-radius: 15px;
-  background-color: #0d3762;
-  z-index: -1;
-  -webkit-box-shadow: 4px 8px 19px -3px #0d3762;
-  box-shadow: 4px 8px 19px -3px #0d3762;
-  transition: all 250ms;
-}
+
+.left-right-wrapper form button::before,
 .jij::before {
   content: "";
   position: absolute;
@@ -172,19 +162,16 @@
   box-shadow: 4px 8px 19px -3px #0d3762;
   transition: all 250ms;
 }
-.left-right-wrapper form button:hover {
+
+.left-right-wrapper form button:hover,
+.jij:hover {
   color: #e8e8e8;
 }
-.left-right-wrapper form button:hover::before {
-  width: 100%;
-}
-.jij:hover {
-  /* color: #e8e8e8; */
-}
+
+.left-right-wrapper form button:hover::before,
 .jij:hover::before {
   width: 100%;
 }
-
 
 .svg-wrapper-1:nth-of-type(2) svg {
   transition: 0.7s all ease;
@@ -209,88 +196,81 @@
   z-index: 1;
   width: 700px;
 }
+
 .label-auth,
 .auth {
   color: white;
 }
-.auth a {
-  color: #59abae;
-}
+
 .login-label {
   color: white;
 }
+
 .error-message {
   color: red;
 }
 
-/* responsive to mobile */
-/* For devices with a screen size of 600px or less */
-@media (max-width: 600px) {
-  /* Shared styles */
-  .form-wrapper {
-    width: 100%;
-    margin: 0 auto;
-    padding: 10px;
+/* Media Queries */
+
+/* Small screens */
+@media only screen and (max-width: 600px) {
+  .all-wrapper {
+    width: 80%;
+    top: 5%;
+  }
+  
+  .jiji {
+    font-size: 12px;
+  }
+  
+  .left-right-wrapper form {
+    width: 60%;
+  }
+}
+
+/* Medium screens */
+@media only screen and (min-width: 601px) and (max-width: 1024px) {
+  .all-wrapper {
+    width: 60%;
+    top: 8%;
+  }
+  
+  .jiji {
+    font-size: 14px;
+  }
+  
+  .left-right-wrapper form {
+    width: 60%;
+  }
+}
+
+/* Large screens */
+@media only screen and (min-width: 1025px) {
+  .all-wrapper {
+    width: 50%;
+    top: 10%;
+  }
+  
+  .jiji {
+    font-size: 15px;
+  }
+  
+  .left-right-wrapper form {
+    width: 50%;
+  }
+}
+@media only screen and (max-width: 450px) {
+  .all-wrapper {
+    width: 90%;
+    top: 5%;
   }
 
-  .input-field {
-    width: 100%;
-    margin-bottom: 10px;
+  .jiji {
+    font-size: 12px;
+    margin-left: 10px;
   }
 
-  .btn {
-    width: 100%;
-  }
-
-  /* Register page specific styles */
-  .register-wrapper {
-    height: 100vh;
-  }
-
-  .register-form {
-    width: 100%;
-    height: auto;
-    position: static;
-    top: 0;
-    transform: none;
-  }
-
-  .register-form h2 {
-    font-size: 18px;
-  }
-
-  .register-form label {
-    font-size: 16px;
-  }
-
-  .register-form input[type="text"],
-  .register-form input[type="password"] {
-    font-size: 16px;
-  }
-
-  /* Login page specific styles */
-  .login-wrapper {
-    height: 100vh;
-  }
-
-  .login-form {
-    width: 100%;
-    height: auto;
-    position: static;
-    top: 0;
-    transform: none;
-  }
-
-  .login-form h2 {
-    font-size: 18px;
-  }
-
-  .login-form label {
-    font-size: 16px;
-  }
-
-  .login-form input[type="text"],
-  .login-form input[type="password"] {
-    font-size: 16px;
+  .left-right-wrapper form {
+    width: 50%;
   }
 }

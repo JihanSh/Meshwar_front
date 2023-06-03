@@ -15,6 +15,7 @@
     "react-icons": "^4.8.0",
     "react-image-gallery": "^1.2.11",
     "react-loader-spinner": "^5.3.4",
+    "react-modal": "^3.16.1",
     "react-rating-stars-component": "^2.2.0",
     "react-router-dom": "^6.11.1",
     "react-scripts": "5.0.1",
