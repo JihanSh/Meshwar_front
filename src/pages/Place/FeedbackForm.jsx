@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-const FeedbackForm = () => {
+const FeedbackForm = ({placeID}) => {
   const [description, setDescription] = useState("");
+  // console.log(placeID)
   const [stars, setStars] = useState(0);
   const [images, setImages] = useState([]);
   const [error, setError] = useState("");
+
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -25,31 +27,31 @@ const FeedbackForm = () => {
 
     const formData = new FormData();
     formData.append("description", description);
-    formData.append("stars", stars);
+    formData.append("stars", Number(stars));
 
     if (images.length > 0) {
       for (let i = 0; i < images.length; i++) {
-        formData.append("images", images[i]);
+        formData.append("feedImages", images[i]);
       }
     }
-
+console.log(placeID)
     try {
       const response = await axios.post(
-        "https://meshwar.onrender.com/feedback",
+        `https://meshwar.onrender.com/feedback/${placeID}`,
         formData
       );
 
-      const { feedback, averageStars } = response.data;
+      const { feedback } = response.data;
 
       setDescription("");
       setStars(0);
       setImages([]);
       setError("");
 
-      console.log("Feedback submitted successfully:", feedback, averageStars);
+      console.log("Feedback submitted successfully:", feedback);
     } catch (error) {
       console.error(error);
-      setError("Server error");
+      setError(error.messa);
     }
   };
 
@@ -86,7 +88,7 @@ const FeedbackForm = () => {
             <input
               type="file"
               id="images"
-              name="images"
+              name="feedImages"
               className="feedback-input"
               multiple
               onChange={handleFileChange}

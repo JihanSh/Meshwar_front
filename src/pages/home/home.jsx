@@ -304,7 +304,7 @@ const Home = () => {
               <p>No feedbacks available.</p>
             ) : (
               <div className="feedback-images">
-                {feedbacks[currentIndex % feedbacks.length].images.map(
+                {feedbacks[currentIndex % feedbacks.length].feedImages.map(
                   (image) => (
                     <img
                       key={image._id}

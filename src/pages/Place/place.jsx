@@ -7,7 +7,7 @@ import "./place.css";
 import MAP from "../../assets/MAP.png";
 import FeedbackForm from "./FeedbackForm";
 
-const PlaceInfo = () => {
+const PlaceInfo = (placeID) => {
   const [placeInfo, setPlaceInfo] = useState({});
   const [feedback, setFeedback] = useState([]);
   const [images, setImages] = useState([]);
@@ -16,6 +16,7 @@ const PlaceInfo = () => {
   const [isPopupOpen, setPopupOpen] = useState(false);
   const place = useLocation();
   const placeId = place.state.each;
+  console.log(placeId)
   let imgId = place.state.img_id;
   let places = place.state.activity;
 
@@ -24,6 +25,7 @@ const PlaceInfo = () => {
   }, [placeId]);
 
   const handleImageClick = () => {
+    console.log("dfghfdfg", placeId)
     fetch(`https://meshwar.onrender.com/place/${placeId || imgId || places}`)
       .then((response) => response.json())
       .then((data) => {
@@ -36,12 +38,12 @@ const PlaceInfo = () => {
         console.error(error);
       });
     fetch(
-      `https://meshwar.onrender.com/place/show/${placeId || imgId || places}`
+      `https://meshwar.onrender.com/feedback/place/${placeId || imgId || places}`
     )
       .then((response) => response.json())
       .then((data) => {
         setFeedback(data);
-        console.log(data);
+        console.log("all feedback",data);
         if (data && data.images) {
           setImages(data.images);
         }
@@ -158,16 +160,19 @@ const PlaceInfo = () => {
           {isPopupOpen && (
             <div className="popup">
               <FeedbackForm
+                placeID={placeInfo._id}
                 isOpen={true}
                 onRequestClose={handleFeedbackFormClose}
               />
+              {console.log("ID", placeID)}
+              {console.log("Id", placeId)}
             </div>
           )}
           <div className="feedback-scroll">
             {visibleFeedbacks.map((feedbacks, index) => (
               <div key={index}>
                 <p>{feedbacks.description}</p>
-                {feedbacks.images.map((image, imgIndex) => (
+                {feedbacks.feedImages.map((image, imgIndex) => (
                   <img
                     className="feed-img"
                     key={imgIndex}
