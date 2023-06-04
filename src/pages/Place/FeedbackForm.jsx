@@ -55,40 +55,48 @@ const FeedbackForm = () => {
 
   return (
     <div className="feedback-form">
-      <h2>Provide Feedback</h2>
+      <h2>Provide you own Feedback</h2>
       <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="description">Description:</label>
-          <input
-            type="text"
-            id="description"
-            name="description"
-            value={description}
-            onChange={handleChange}
-          />
+        <div className="feedback-formLabel">
+          <div className="feedback-label">
+            <label htmlFor="stars">Rating:</label>
+            <input
+              type="number"
+              id="stars"
+              name="stars"
+              value={stars}
+              className="feedback-input"
+              onChange={handleChange}
+            />
+          </div>
+          <div className="feedback-label">
+            <label htmlFor="description">Description:</label>
+            <input
+              type="text"
+              id="description"
+              name="description"
+              className="feedback-input1"
+              value={description}
+              onChange={handleChange}
+            />
+          </div>
+
+          <div className="feedback-label">
+            <label htmlFor="images">Images:</label>
+            <input
+              type="file"
+              id="images"
+              name="images"
+              className="feedback-input"
+              multiple
+              onChange={handleFileChange}
+            />
+          </div>
+          <button className="submit-btn" type="submit">
+            Submit
+          </button>
+          <div className="feederror">{error && <p>{error}</p>}</div>
         </div>
-        <div>
-          <label htmlFor="stars">Stars:</label>
-          <input
-            type="number"
-            id="stars"
-            name="stars"
-            value={stars}
-            onChange={handleChange}
-          />
-        </div>
-        <div>
-          <label htmlFor="images">Images:</label>
-          <input
-            type="file"
-            id="images"
-            name="images"
-            multiple
-            onChange={handleFileChange}
-          />
-        </div>
-        <button type="submit">Submit</button>
-        {error && <p>{error}</p>}
       </form>
     </div>
   );

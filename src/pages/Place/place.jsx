@@ -13,7 +13,7 @@ const PlaceInfo = () => {
   const [images, setImages] = useState([]);
   const [rating, setRating] = useState(0);
   const [showAllFeedback, setShowAllFeedback] = useState(false);
-  const [showFeedbackForm, setShowFeedbackForm] = useState(false);
+  const [isPopupOpen, setPopupOpen] = useState(false);
   const place = useLocation();
   const placeId = place.state.each;
   let imgId = place.state.img_id;
@@ -114,11 +114,11 @@ const PlaceInfo = () => {
 
   const visibleFeedbacks = showAllFeedback ? feedback : feedback.slice(0, 3);
   const toggleFeedbackForm = () => {
-    setShowFeedbackForm(!showFeedbackForm);
+    setPopupOpen(!isPopupOpen);
   };
 
   const handleFeedbackFormClose = () => {
-    setShowFeedbackForm(false);
+    setPopupOpen(false);
   };
 
   return (
@@ -149,7 +149,20 @@ const PlaceInfo = () => {
             showAllFeedback ? "show-all-feedback" : ""
           }`}
         >
-          <h1>Feedback</h1>
+          <div className="plusbtn">
+            <h1>Feedback</h1>
+            <button className="plus-button" onClick={toggleFeedbackForm}>
+              +
+            </button>
+          </div>
+          {isPopupOpen && (
+            <div className="popup">
+              <FeedbackForm
+                isOpen={true}
+                onRequestClose={handleFeedbackFormClose}
+              />
+            </div>
+          )}
           <div className="feedback-scroll">
             {visibleFeedbacks.map((feedbacks, index) => (
               <div key={index}>
@@ -166,20 +179,11 @@ const PlaceInfo = () => {
             ))}
           </div>
           {!showAllFeedback && (
-            <button className="viewMore" onClick={handleViewMoreClick}>
+            <button className="submit-btn" onClick={handleViewMoreClick}>
               View More
             </button>
           )}
         </div>
-        <button className="plus-button" onClick={toggleFeedbackForm}>
-          +
-        </button>
-        {showFeedbackForm && (
-          <FeedbackForm
-            isOpen={true}
-            onRequestClose={handleFeedbackFormClose}
-          />
-        )}
       </div>
       <div className="slider-wrapper" id="slider-wrapper">
         <div id="image-slider">
