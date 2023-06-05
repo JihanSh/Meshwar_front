@@ -1,3 +1,5 @@
+@import url(https://fonts.googleapis.com/css?family=Raleway);
+
 .contact-wrapper {
   height: auto;
   display: flex;
@@ -24,7 +26,9 @@
 }
 
 .h1-contact {
-  font-size: 30px;
+      font-family: "Yellowtail", cursive;
+
+  font-size: 40px;
   font-weight: bold;
   line-height: 3.5rem;
 }
@@ -38,6 +42,45 @@
 }
 strong {
   color: #59abae;
+  font-size: 30
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  px;
+  
+    font-weight: normal;
+
 }
 
 .form-inline {

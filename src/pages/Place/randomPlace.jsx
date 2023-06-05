@@ -1,8 +1,10 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useSpring, animated } from "react-spring";
 import "./place.css";
 
 function RandomPlace() {
+  let navigate = useNavigate();
   const [randomPlace, setRandomPlace] = useState(null);
   const [error, setError] = useState(null);
   const [showDetails, setShowDetails] = useState(false);
@@ -52,7 +54,14 @@ function RandomPlace() {
     <div className="random-container">
       <animated.div style={fadeIn}>
         <p>{randomPlace.name}</p>
-        <img className="random-image" src={randomPlace.mainImage} alt="Place" />
+        <img
+          className="random-image"
+          src={randomPlace.mainImage}
+          alt="Place"
+          onClick={() =>
+            navigate("/placeInfo", { state: {randomId:randomPlace._id} })
+          }
+        />
         <p>{randomPlace.activity.name}</p>
         <p>{randomPlace.location.name}</p>
         <button className="random-button" onClick={handleRandomClick}>

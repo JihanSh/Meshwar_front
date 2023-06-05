@@ -1,8 +1,9 @@
-import React,{useState} from 'react'
-import "./contact.css"
-import "../../components/headnav/header-navbar.css"
-import { Navbar } from '../../components/headnav/navbar'
-import MAP from "../../assets/MAP.png"
+import React, { useState } from "react";
+import "./contact.css";
+import "../../components/headnav/header-navbar.css";
+import { Navbar } from "../../components/headnav/navbar";
+import MAP from "../../assets/MAP.png";
+import { Link } from "react-router-dom";
 
 const Contact = () => {
   const [name, setName] = useState("");
@@ -73,7 +74,13 @@ const Contact = () => {
       <div className="contact-container">
         <h1 className="h1-contact">Join us.</h1>
         <p className="p-contact">
-          <strong> Be part of our amazing team </strong>
+          <strong>
+            Be part of our amazing team
+            <link
+              rel="stylesheet"
+              href="https://fonts.googleapis.com/css?family=Yellowtail"
+            />
+          </strong>
         </p>
         <p className="p-contact">
           If you are a travel consultant committed to providing exceptional
@@ -139,9 +146,9 @@ const Contact = () => {
           </div>
         </form>{" "}
       </div>{" "}
-        <img className="jumbotron" src={MAP}></img>
+      <img className="jumbotron" src={MAP}></img>
     </div>
   );
-}
+};
 
-export default Contact
+export default Contact;

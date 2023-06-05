@@ -20,6 +20,7 @@ export const Navbar = () => {
     const navLinks = document.querySelector(".nav-links");
     const links = document.querySelectorAll(".nav-links li");
     const hamburger = document.querySelector(".hamburger");
+    window.scrollTo(0, 0);
 
     // Animate Links
     navLinks.classList.toggle("open");
@@ -46,6 +47,7 @@ export const Navbar = () => {
         <ul className="nav-links">
           <li>
             <Link
+              onClick={handleHamburgerClick}
               to="/about"
               style={{
                 textDecoration: "none",
@@ -62,6 +64,7 @@ export const Navbar = () => {
                 textDecoration: "none",
                 color: isHomePage ? "#ffffff" : "#0d3762",
               }}
+              onClick={handleHamburgerClick}
             >
               <p>Places to go</p>
             </Link>
@@ -73,12 +76,14 @@ export const Navbar = () => {
                 textDecoration: "none",
                 color: isHomePage ? "#ffffff" : "#0d3762",
               }}
+              onClick={handleHamburgerClick}
             >
               <img src={meshwar} alt="Meshwar" />
             </Link>
           </li>
           <li>
             <Link
+              onClick={handleHamburgerClick}
               to="/contact"
               style={{
                 textDecoration: "none",
@@ -106,6 +111,7 @@ export const Navbar = () => {
                   textDecoration: "none",
                   color: isHomePage ? "#ffffff" : "#0d3762",
                 }}
+                onClick={handleHamburgerClick}
               >
                 <p>Login</p>
               </Link>

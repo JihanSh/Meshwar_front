@@ -205,7 +205,7 @@ const Home = () => {
                   src={image.url}
                   alt={image.alt}
                   onClick={() =>
-                    navigate("/place", { state: { id: place._id } })
+                    navigate("/placeInfo", { state: { SelectId: place._id } })
                   }
                 />
                 <div className="image-name-container">

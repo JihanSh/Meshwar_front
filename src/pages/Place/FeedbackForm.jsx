@@ -94,7 +94,11 @@ console.log(placeID)
               onChange={handleFileChange}
             />
           </div>
-          <button className="submit-btn" type="submit">
+          <button
+            className="submit-btn"
+            type="submit"
+            onClick={() => window.location.reload(false)}
+          >
             Submit
           </button>
           <div className="feederror">{error && <p>{error}</p>}</div>

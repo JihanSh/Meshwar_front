@@ -49,10 +49,11 @@
   width: 42px;
   height: 42px;
   line-height: 42px;
-  background: #2e3138;
+  background: #fff;
   color: #9ea0a9;
   text-align: center;
   border-radius: 50%;
+  font-size: 25px;
 }
 
 .footer-content .logo-widget .footer-social li a:hover {

@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { useLocation, useParams } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import $ from "jquery";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./place.css";
 import MAP from "../../assets/MAP.png";
 import FeedbackForm from "./FeedbackForm";
+import { Rating } from "react-simple-star-rating";
 
 const PlaceInfo = (placeID) => {
   const [placeInfo, setPlaceInfo] = useState({});
@@ -14,19 +15,25 @@ const PlaceInfo = (placeID) => {
   const [rating, setRating] = useState(0);
   const [showAllFeedback, setShowAllFeedback] = useState(false);
   const [isPopupOpen, setPopupOpen] = useState(false);
+
   const place = useLocation();
   const placeId = place.state.each;
-  console.log(placeId)
+  console.log(placeId);
   let imgId = place.state.img_id;
   let places = place.state.activity;
-
+  let randomId = place.state.randomId;
+  let select = place.state.SelectId;
   useEffect(() => {
     handleImageClick();
   }, [placeId]);
 
   const handleImageClick = () => {
-    console.log("dfghfdfg", placeId)
-    fetch(`https://meshwar.onrender.com/place/${placeId || imgId || places}`)
+    console.log("dfghfdfg", placeId);
+    fetch(
+      `https://meshwar.onrender.com/place/${
+        placeId || imgId || places || randomId || select
+      }`
+    )
       .then((response) => response.json())
       .then((data) => {
         setPlaceInfo(data);
@@ -38,12 +45,13 @@ const PlaceInfo = (placeID) => {
         console.error(error);
       });
     fetch(
-      `https://meshwar.onrender.com/feedback/place/${placeId || imgId || places}`
+      `https://meshwar.onrender.com/feedback/place/${
+        placeId || imgId || places || randomId || select
+      }`
     )
       .then((response) => response.json())
       .then((data) => {
         setFeedback(data);
-        console.log("all feedback",data);
         if (data && data.images) {
           setImages(data.images);
         }
@@ -105,16 +113,11 @@ const PlaceInfo = (placeID) => {
     }
   }, []);
 
-  const handleRatingChange = (value) => {
-    setRating(value);
-    // You can perform any additional logic here, such as updating the rating on the server
-  };
-
   const handleViewMoreClick = () => {
     setShowAllFeedback(true);
   };
 
-  const visibleFeedbacks = showAllFeedback ? feedback : feedback.slice(0, 3);
+  const visibleFeedbacks = showAllFeedback ? feedback : feedback?.slice(0, 2);
   const toggleFeedbackForm = () => {
     setPopupOpen(!isPopupOpen);
   };
@@ -122,6 +125,17 @@ const PlaceInfo = (placeID) => {
   const handleFeedbackFormClose = () => {
     setPopupOpen(false);
   };
+  const calculateAverageFeedback = () => {
+    let totalStars = 0;
+
+    feedback.forEach((feedback) => {
+      totalStars += feedback.stars;
+    });
+
+    const average = totalStars / feedback.length;
+    return average;
+  };
+  const averageRating = calculateAverageFeedback();
 
   return (
     <div className="info-container">
@@ -134,17 +148,12 @@ const PlaceInfo = (placeID) => {
         <p>{placeInfo.price}$</p>
         <div className="rating">
           <h1>Rating:</h1>
-          <p className="stars">
-            {[1, 2, 3, 4, 5].map((star) => (
-              <span
-                key={star}
-                className={star <= rating ? "active" : ""}
-                onClick={() => handleRatingChange(star)}
-              >
-                &#9733;
-              </span>
-            ))}
-          </p>
+          <Rating
+            // fillColor="#"
+            size={20}
+            readonly={true}
+            initialValue={averageRating}
+          />
         </div>
         <div
           className={`feedback1-container ${
@@ -164,13 +173,18 @@ const PlaceInfo = (placeID) => {
                 isOpen={true}
                 onRequestClose={handleFeedbackFormClose}
               />
-              {console.log("ID", placeID)}
-              {console.log("Id", placeId)}
             </div>
           )}
+
           <div className="feedback-scroll">
             {visibleFeedbacks.map((feedbacks, index) => (
               <div key={index}>
+                <Rating
+                  // fillColor="#"
+                  size={20}
+                  readonly={true}
+                  initialValue={feedbacks.stars}
+                />
                 <p>{feedbacks.description}</p>
                 {feedbacks.feedImages.map((image, imgIndex) => (
                   <img
